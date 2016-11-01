@@ -19,7 +19,7 @@
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
-        <Grid Margin="0,0,0,249" Grid.ColumnSpan="2"/>
+        
         <Menu x:Name="menu" Height="20" VerticalAlignment="Top" Background="#FFF18D8D">
             <MenuItem Header="File" Click="MenuItem_Click_1">
                 <MenuItem Header="New" Height="19">
