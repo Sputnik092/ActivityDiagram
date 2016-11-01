@@ -20,22 +20,29 @@
 
     <Grid x:Name="LayoutRoot">
         <StackPanel Orientation="Horizontal" Background="#FFF18D8D" Height="20" VerticalAlignment="Top">
-        <Menu x:Name="menu" Height="20" Background="#FFF18D8D">
-            <MenuItem Header="File" Click="MenuItem_Click_1">
-                <MenuItem Header="New" Height="19">
-                    <MenuItem Header="New Project" Height="19" Margin="0,0,-41,0" />
+            <Menu x:Name="menu" Height="20" Background="#FFF18D8D">
+                <MenuItem Header="File" Click="MenuItem_Click_1">
+                    <MenuItem Header="New" Height="19">
+                        <MenuItem Header="New Project" Height="19" Margin="0,0,-41,0" />
+                    </MenuItem>
+                    <MenuItem Header="Save" Height="20" Click="MenuItem_Click_2">
+                    </MenuItem>
+                    <MenuItem Header="Save As" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_3"/>
+                    <MenuItem Header="Load" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_4"/>
+                  
                 </MenuItem>
-                <MenuItem Header="Save" Height="20">
-                    <MenuItem x:Name="SaveAs" Header="Save As..."  Height="20" Margin="0,0,-41,0"/>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="Undo" HorizontalAlignment="Left" Width="140"/>
+                    <MenuItem Header="Redo" HorizontalAlignment="Left" Width="140"/>
+                    <MenuItem Header="Copy" HorizontalAlignment="Left" Width="140"/>
+                    <MenuItem Header="Paste" HorizontalAlignment="Left" Width="140"/>
                 </MenuItem>
-            </MenuItem>
-            <MenuItem Header="Edit"/>
-        </Menu>
+            </Menu>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <StackPanel Width="133" Margin="0,20,0,0" Background="#9BDA5F"></StackPanel>
-            <StackPanel Width="133" Margin="0,20,0,0" Background="#5FDAD8"></StackPanel>
-            <StackPanel Width="133" Margin="0,20,0,0" Background="#F1F13D"></StackPanel>
+            <StackPanel Width="133" Margin="0,20,0,0" Background="#5FDAD8"/>
+            <StackPanel Width="128" Margin="0,20,0,0" Background="#F1F13D"></StackPanel>
 
         </StackPanel>
     </Grid>
