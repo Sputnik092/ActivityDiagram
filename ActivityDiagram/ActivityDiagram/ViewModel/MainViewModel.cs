@@ -18,7 +18,8 @@ namespace ActivityDiagram.ViewModel
         /// </summary>
         public const string WelcomeTitlePropertyName = "WelcomeTitle";
 
-        private string _welcomeTitle = string.Empty;
+
+        private string _welcomeTitle = string.Empty;    
 
         /// <summary>
         /// Gets the WelcomeTitle property.

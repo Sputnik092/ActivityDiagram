@@ -9,7 +9,7 @@
         Width="300"
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
-    
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,15 +18,31 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid x:Name="LayoutRoot">
+    <Grid Width="auto" Height="auto">
+        <Border Name="border" Padding="5" BorderBrush="SteelBlue" BorderThickness="2,3,2,3" CornerRadius="1"
+          VerticalAlignment="Top" Height="30">
+            <StackPanel Width="300" Margin="0,0,-22,219" VerticalAlignment="Top" Height="26">
+                <Menu>
+                    <MenuItem Header="Test">
+                    </MenuItem>
+                </Menu>
+            </StackPanel>
+        </Border>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Width="100" Height="auto" Margin="0,50,0,0">
 
-        <TextBlock FontSize="36"
-                   FontWeight="Bold"
-                   Foreground="Purple"
-                   Text="{Binding WelcomeTitle}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   TextWrapping="Wrap" />
 
+            </StackPanel>
+            <StackPanel Width="100" Height="auto" Margin="0,50,0,0">
+
+
+            </StackPanel>
+            <StackPanel Width="100" Height="auto" Margin="0,50,0,0">
+
+
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
+
 </Window>
