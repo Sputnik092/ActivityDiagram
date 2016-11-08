@@ -49,11 +49,11 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
             <StackPanel Width="133" Margin="0,20,0,0" Background="#9BDA5F">
-                <TextBox x:Name="textBox" Height="23" TextWrapping="Wrap" Text="TextBox"/>
+                
 
             </StackPanel>
             <StackPanel Width="133" Margin="0,20,0,0" Background="#5FDAD8">
-                <TextBox x:Name="textBox1" Height="23" TextWrapping="Wrap" Text="TextBox"/>
+                
 
             </StackPanel>
             <StackPanel Width="128" Margin="0,20,0,0" Background="#F1F13D"/>
