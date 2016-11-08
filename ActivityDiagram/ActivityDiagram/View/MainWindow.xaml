@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
-        Height="400"
+        Height="420"
         Width="400"
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
@@ -18,18 +18,15 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid x:Name="LayoutRoot">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="121*"/>
-            <ColumnDefinition Width="271*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" Background="#FFF18D8D" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="392" Grid.ColumnSpan="2">
+    <Grid x:Name="LayoutRoot" Width="400" >
+
+        <StackPanel Orientation="Horizontal" Background="#FFF18D8D" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="{Binding Width, ElementName=LayoutRoot}" Grid.ColumnSpan="2">
             <Menu x:Name="menu" Height="20" Background="#FFF18D8D">
                 <MenuItem Header="File" Click="MenuItem_Click_1">
                     <MenuItem Header="New" Height="19">
                         <MenuItem Header="New Project" Height="19" Margin="0,0,-41,0" />
                     </MenuItem>
-                    <MenuItem Header="Save" Height="20" Click="MenuItem_Click_2">
+                    <MenuItem x:Name="mnuSave" Header="Save" Height="20" Click="MenuItem_Click_2">
                     </MenuItem>
                     <MenuItem Header="Save As" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_3"/>
                     <MenuItem Header="Load" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_4"/>
@@ -48,12 +45,26 @@
             </Menu>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
-            <StackPanel Width="133" Margin="0,20,0,0" Background="#9BDA5F">
-                
+            <StackPanel x:Name="shapepnl"  Width="133" Margin="0,20,0,0" Background="#9BDA5F" Height="350">
+                <ScrollViewer x:Name="shapescroVwr"  Height="{Binding Height, ElementName=shapepnl}">
+
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" >
+                        <Rectangle Height="74"/>
+                        <Calendar/>
+                        
+                        <Calendar/>
+                    </StackPanel>
+
+
+
+
+
+                </ScrollViewer>
+
 
             </StackPanel>
             <StackPanel Width="133" Margin="0,20,0,0" Background="#5FDAD8">
-                
+                <TextBox x:Name="textBox1" Height="23" TextWrapping="Wrap" Text="TextBox"/>
 
             </StackPanel>
             <StackPanel Width="128" Margin="0,20,0,0" Background="#F1F13D"/>
