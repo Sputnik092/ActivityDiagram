@@ -40,6 +40,7 @@
             </Menu>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
+
             <StackPanel Width="133" Margin="0,20,0,0" Background="#9BDA5F"></StackPanel>
             <StackPanel Width="133" Margin="0,20,0,0" Background="#5FDAD8"/>
             <StackPanel Width="128" Margin="0,20,0,0" Background="#F1F13D"></StackPanel>
