@@ -19,7 +19,11 @@
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
-        <StackPanel Orientation="Horizontal" Background="#FFF18D8D" Height="20" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="271*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Background="#FFF18D8D" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="392" Grid.ColumnSpan="2">
             <Menu x:Name="menu" Height="20" Background="#FFF18D8D">
                 <MenuItem Header="File" Click="MenuItem_Click_1">
                     <MenuItem Header="New" Height="19">
@@ -29,20 +33,30 @@
                     </MenuItem>
                     <MenuItem Header="Save As" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_3"/>
                     <MenuItem Header="Load" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_4"/>
-                  
+
+
                 </MenuItem>
                 <MenuItem Header="Edit">
-                    <MenuItem Header="Undo" HorizontalAlignment="Left" Width="140"/>
-                    <MenuItem Header="Redo" HorizontalAlignment="Left" Width="140"/>
-                    <MenuItem Header="Copy" HorizontalAlignment="Left" Width="140"/>
-                    <MenuItem Header="Paste" HorizontalAlignment="Left" Width="140"/>
+                    <MenuItem Command="ApplicationCommands.Copy"/>
+                    <MenuItem Command="ApplicationCommands.Paste"/>
+                    <MenuItem Command="ApplicationCommands.Undo"/>
+                    <MenuItem Command="ApplicationCommands.Redo"/>
+                    <MenuItem Command="ApplicationCommands.SelectAll"/>
+                    <MenuItem Command="ApplicationCommands.Cut"/>
                 </MenuItem>
+
             </Menu>
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <StackPanel Width="133" Margin="0,20,0,0" Background="#9BDA5F"></StackPanel>
-            <StackPanel Width="133" Margin="0,20,0,0" Background="#5FDAD8"/>
-            <StackPanel Width="128" Margin="0,20,0,0" Background="#F1F13D"></StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+            <StackPanel Width="133" Margin="0,20,0,0" Background="#9BDA5F">
+                <TextBox x:Name="textBox" Height="23" TextWrapping="Wrap" Text="TextBox"/>
+
+            </StackPanel>
+            <StackPanel Width="133" Margin="0,20,0,0" Background="#5FDAD8">
+                <TextBox x:Name="textBox1" Height="23" TextWrapping="Wrap" Text="TextBox"/>
+
+            </StackPanel>
+            <StackPanel Width="128" Margin="0,20,0,0" Background="#F1F13D"/>
 
         </StackPanel>
     </Grid>
