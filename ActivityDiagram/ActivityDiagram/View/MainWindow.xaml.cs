@@ -17,6 +17,8 @@ namespace ActivityDiagram
             Closing += (s, e) => ViewModelLocator.Cleanup();
         }
 
+
+
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
