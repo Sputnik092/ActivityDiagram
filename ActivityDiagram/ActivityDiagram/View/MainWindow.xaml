@@ -25,7 +25,7 @@
             <View:Menu/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
-            <View:LeftPanel Loaded="LeftPanel_Loaded"/>
+            <View:LeftPanel/>
             <Grid Width="133" Margin="0,20,0,0" Background="#5FDAD8">
 
             </Grid>

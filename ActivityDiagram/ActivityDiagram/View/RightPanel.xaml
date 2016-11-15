@@ -6,5 +6,6 @@
              xmlns:local="clr-namespace:ActivityDiagram.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel Width="128" Margin="0,20,0,0" Background="#F1F13D"/>
+    <StackPanel Width="128" Margin="0,20,0,0" Background="#F1F13D">
+    </StackPanel>
 </UserControl>
