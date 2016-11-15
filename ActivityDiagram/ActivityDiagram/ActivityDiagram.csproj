@@ -90,6 +90,21 @@
     <Compile Include="View\RightPanel.xaml.cs">
       <DependentUpon>RightPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Shapes\CircleUserControl.xaml.cs">
+      <DependentUpon>CircleUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shapes\LineUserControl.xaml.cs">
+      <DependentUpon>LineUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shapes\PentagonUserControl.xaml.cs">
+      <DependentUpon>PentagonUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shapes\RectangleUserControl.xaml.cs">
+      <DependentUpon>RectangleUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shapes\TriangleUserControl.xaml.cs">
+      <DependentUpon>TriangleUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\LeftPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +130,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RightPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\CircleUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\LineUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\PentagonUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\RectangleUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\TriangleUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

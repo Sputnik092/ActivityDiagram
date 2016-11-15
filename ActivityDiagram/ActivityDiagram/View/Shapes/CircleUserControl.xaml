@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="ActivityDiagram.View.Shapes.CircleUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ActivityDiagram.View.Shapes"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100">
+    <Grid>
+        <Ellipse Stroke="Black" StrokeThickness="4">
+            <!-- From the Demos for mouse interaction, needs additional code to be relevant -->
+            <!-- <i:interaction.triggers>
+                <i:eventtrigger eventname="mousedown">
+                    <cmd:eventtocommand command="{binding datacontext.mousedownshapecommand, relativesource={relativesource findancestor, ancestortype={x:type window}}}" passeventargstocommand="true"/>
+                </i:eventtrigger>
+                <i:eventtrigger eventname="mousemove">
+                    <cmd:eventtocommand command="{binding datacontext.mousemoveshapecommand, relativesource={relativesource findancestor, ancestortype={x:type window}}}" passeventargstocommand="true"/>
+                </i:eventtrigger>
+                <i:eventtrigger eventname="mouseup">
+                    <cmd:eventtocommand command="{binding datacontext.mouseupshapecommand, relativesource={relativesource findancestor, ancestortype={x:type window}}}" passeventargstocommand="true"/>
+                </i:eventtrigger>
+            </i:interaction.triggers> -->
+        </Ellipse>
+    </Grid>
+</UserControl>
