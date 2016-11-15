@@ -20,34 +20,16 @@
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot" Width="400" >
-        
+
         <StackPanel Orientation="Horizontal" Background="#FFF18D8D" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="{Binding Width, ElementName=LayoutRoot}" Grid.ColumnSpan="2">
             <View:Menu/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
-            <StackPanel x:Name="shapepnl"  Width="133" Background="#9BDA5F" Height="350">
-                <ScrollViewer x:Name="shapescroVwr"  Height="{Binding Height, ElementName=shapepnl}">
+            <View:LeftPanel Loaded="LeftPanel_Loaded"/>
+            <Grid Width="133" Margin="0,20,0,0" Background="#5FDAD8">
 
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" >
-                        <Rectangle Height="74"/>
-                        <Calendar/>
-                        
-                        <Calendar/>
-                    </StackPanel>
-
-
-
-
-
-                </ScrollViewer>
-
-
-            </StackPanel>
-            <StackPanel Width="133" Margin="0,20,0,0" Background="#5FDAD8">
-                <TextBox x:Name="textBox1" Height="23" TextWrapping="Wrap" Text="TextBox"/>
-
-            </StackPanel>
-            <StackPanel Width="128" Margin="0,20,0,0" Background="#F1F13D"/>
+            </Grid>
+            <View:RightPanel/>
 
         </StackPanel>
     </Grid>

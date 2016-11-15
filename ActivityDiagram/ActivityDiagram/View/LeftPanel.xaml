@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="ActivityDiagram.View.LeftPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ActivityDiagram.View"
+             mc:Ignorable="d" 
+             d:DesignWidth="133">
+    <StackPanel x:Name="shapepnl" Width="133" Background="#9BDA5F" Height="350">
+        <ScrollViewer x:Name="shapescroVwr"  Height="{Binding Height, ElementName=shapepnl}">
+
+            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" >
+                <Rectangle Height="74"/>
+                <Calendar/>
+
+                <Calendar/>
+            </StackPanel>
+
+
+
+
+
+        </ScrollViewer>
+
+
+    </StackPanel>
+</UserControl>
