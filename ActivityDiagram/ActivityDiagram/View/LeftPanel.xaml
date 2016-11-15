@@ -6,14 +6,25 @@
              xmlns:local="clr-namespace:ActivityDiagram.View"
              mc:Ignorable="d" 
              d:DesignWidth="133">
-    <StackPanel x:Name="shapepnl" Width="133" Background="#9BDA5F" Height="350">
+    <StackPanel x:Name="shapepnl" Width="133" Background="#FFFFFF" Height="350">
         <ScrollViewer x:Name="shapescroVwr"  Height="{Binding Height, ElementName=shapepnl}">
 
-            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" >
-                <Rectangle Height="74"/>
-                <Calendar/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button Height="50" Width="50">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="/Images/Rectangle.png"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
-                <Calendar/>
+                <Button Height="50" Width="50">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="http://etc.usf.edu/clipart/40600/40694/pb_tri_40694_lg.gif"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </StackPanel>
 
 
