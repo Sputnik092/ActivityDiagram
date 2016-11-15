@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:View="clr-namespace:ActivityDiagram.View"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
         Height="420"
@@ -19,33 +20,12 @@
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot" Width="400" >
-
+        
         <StackPanel Orientation="Horizontal" Background="#FFF18D8D" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="{Binding Width, ElementName=LayoutRoot}" Grid.ColumnSpan="2">
-            <Menu x:Name="menu" Height="20" Background="#FFF18D8D">
-                <MenuItem Header="File" Click="MenuItem_Click_1">
-                    <MenuItem Header="New" Height="19">
-                        <MenuItem Header="New Project" Height="19" Margin="0,0,-41,0" />
-                    </MenuItem>
-                    <MenuItem x:Name="mnuSave" Header="Save" Height="20" Click="MenuItem_Click_2">
-                    </MenuItem>
-                    <MenuItem Header="Save As" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_3"/>
-                    <MenuItem Header="Load" HorizontalAlignment="Left" Width="140" Click="MenuItem_Click_4"/>
-
-
-                </MenuItem>
-                <MenuItem Header="Edit">
-                    <MenuItem Command="ApplicationCommands.Copy"/>
-                    <MenuItem Command="ApplicationCommands.Paste"/>
-                    <MenuItem Command="ApplicationCommands.Undo"/>
-                    <MenuItem Command="ApplicationCommands.Redo"/>
-                    <MenuItem Command="ApplicationCommands.SelectAll"/>
-                    <MenuItem Command="ApplicationCommands.Cut"/>
-                </MenuItem>
-
-            </Menu>
+            <View:Menu/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
-            <StackPanel x:Name="shapepnl"  Width="133" Margin="0,20,0,0" Background="#9BDA5F" Height="350">
+            <StackPanel x:Name="shapepnl"  Width="133" Background="#9BDA5F" Height="350">
                 <ScrollViewer x:Name="shapescroVwr"  Height="{Binding Height, ElementName=shapepnl}">
 
                     <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" >
