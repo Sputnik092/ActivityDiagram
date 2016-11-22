@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,26 @@ namespace ActivityDiagram.View
     /// </summary>
     public partial class Menu : UserControl
     {
+       
+
+
         public Menu()
         {
             InitializeComponent();
+   
         }
+
+     
+
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void mnuSave_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }
