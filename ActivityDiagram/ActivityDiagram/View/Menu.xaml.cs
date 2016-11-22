@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,29 @@ namespace ActivityDiagram.View
 
         private void mnuSave_Click(object sender, RoutedEventArgs e)
         {
-           
+            SaveFileDialog savefiledialog = new SaveFileDialog();
+
+            savefiledialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
+
+            if (savefiledialog.ShowDialog() == true)
+            {
+                File.WriteAllText(savefiledialog.FileName, txtEditor.Text);
+
+               
+
+            }
+    }
+
+        private void mnuOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openfiledialog = new OpenFileDialog();
+
+            if(openfiledialog.ShowDialog()==true)
+            {
+                txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+            }
         }
     }
+
 }
+

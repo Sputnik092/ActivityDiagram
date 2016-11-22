@@ -37,6 +37,17 @@ namespace ActivityDiagram.Command
         }
 
         public bool CanUndo() => undoStack.Any();
+
+        public void Undo()
+        {
+            if (!undoStack.Any()) throw new InvalidOperationException();
+            // This uses 'var' which is an implicit type variable (https://msdn.microsoft.com/en-us/library/bb383973.aspx).
+            var command = undoStack.Pop();
+            redoStack.Push(command);
+            command.UnExecute();
+        }
+
+        public bool CanRedo() => redoStack.Any();
         public void Redo()
         {
             if (!redoStack.Any()) throw new InvalidOperationException();
@@ -45,6 +56,8 @@ namespace ActivityDiagram.Command
             undoStack.Push(command);
             command.Execute();
         }
+
+
         #endregion
 
     }

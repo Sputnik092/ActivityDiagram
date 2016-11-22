@@ -15,7 +15,7 @@
                 <MenuItem x:Name="mnuSave"  Header="Save" Command="{Binding Command}" />
 
                 <MenuItem Command="ApplicationCommands.SaveAs"/>
-                <MenuItem Header="Load" HorizontalAlignment="Left" Width="140"/>
+                <MenuItem x:Name="mnuOpen" Header="Open" Click="mnuOpen_Click"/>
 
 
             </MenuItem>
