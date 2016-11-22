@@ -39,29 +39,31 @@ namespace ActivityDiagram.View
 
         }
 
+        
         private void mnuSave_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog savefiledialog = new SaveFileDialog();
+           // SaveFileDialog savefiledialog = new SaveFileDialog();
 
-            savefiledialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
+           // savefiledialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
 
-            if (savefiledialog.ShowDialog() == true)
-            {
-                File.WriteAllText(savefiledialog.FileName, txtEditor.Text);
+           // if (savefiledialog.ShowDialog() == true)
+           // {
+             //   File.WriteAllText(savefiledialog.FileName, txtEditor.Text);
 
                
 
-            }
+           // }
     }
 
         private void mnuOpen_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openfiledialog = new OpenFileDialog();
+          //  OpenFileDialog openfiledialog = new OpenFileDialog();
+           // openfiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-            if(openfiledialog.ShowDialog()==true)
-            {
-                txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
-            }
+           // if (openfiledialog.ShowDialog()==true)
+           // {
+            //    txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+           // }
         }
     }
 

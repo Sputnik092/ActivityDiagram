@@ -14,12 +14,5 @@ namespace ActivityDiagram
             DispatcherHelper.Initialize();
         }
     }
-    public class ViewModelLocator
-    {
-        internal static void Cleanup()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
+  
 }
