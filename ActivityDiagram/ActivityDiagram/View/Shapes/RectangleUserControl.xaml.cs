@@ -24,5 +24,10 @@ namespace ActivityDiagram.View.Shapes
         {
            // InitializeComponent();
         }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using GalaSoft.MvvmLight.Threading;
 
 namespace ActivityDiagram
@@ -13,4 +14,5 @@ namespace ActivityDiagram
             DispatcherHelper.Initialize();
         }
     }
+  
 }
