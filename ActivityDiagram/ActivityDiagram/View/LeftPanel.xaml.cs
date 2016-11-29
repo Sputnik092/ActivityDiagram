@@ -24,5 +24,18 @@ namespace ActivityDiagram.View
         {
             InitializeComponent();
         }
+
+        private void Square_Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Nok smartere med binding - bare temp
+        }
+        private void Triangle_Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Nok smartere med binding
+        }
+        private void Circle_Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Nok smartere med binding
+        }
     }
 }

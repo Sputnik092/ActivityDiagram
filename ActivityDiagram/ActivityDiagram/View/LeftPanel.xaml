@@ -9,8 +9,8 @@
     <StackPanel x:Name="shapepnl" Width="133" Background="#FFFFFF" Height="350">
         <ScrollViewer x:Name="shapescroVwr"  Height="{Binding Height, ElementName=shapepnl}">
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Button Height="50" Width="50">
+            <WrapPanel Orientation="Horizontal" VerticalAlignment="Top">
+                <Button Height="50" Width="50" Command="{Binding AddSquareCommand}">
                     <Button.Template>
                         <ControlTemplate>
                             <Image Source="/Images/Rectangle.png"/>
@@ -18,14 +18,22 @@
                     </Button.Template>
                 </Button>
 
-                <Button Height="50" Width="50">
+                <Button Height="50" Width="50" Click="Triangle_Button_Click">
                     <Button.Template>
                         <ControlTemplate>
                             <Image Source="http://etc.usf.edu/clipart/40600/40694/pb_tri_40694_lg.gif"/>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-            </StackPanel>
+
+                <Button Height="50" Width="50" Click="Circle_Button_Click">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/2000px-Circle_-_black_simple.svg.png"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </WrapPanel>
 
 
 

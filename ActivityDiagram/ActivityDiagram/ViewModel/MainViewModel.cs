@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using ActivityDiagram.Model;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 
 namespace ActivityDiagram.ViewModel
 {
@@ -9,8 +11,16 @@ namespace ActivityDiagram.ViewModel
     /// See http://www.mvvmlight.net
     /// </para>
     /// </summary>
+    /// 
+
+   
     public class MainViewModel : ViewModelBase
     {
+
+        public ICommand AddSquareCommand { get; }
+        public ICommand AddCircleCommand { get; }
+        public ICommand AddTriangleCommand { get; }
+
         private readonly IDataService _dataService;
 
         /// <summary>
@@ -41,6 +51,11 @@ namespace ActivityDiagram.ViewModel
         /// </summary>
         public MainViewModel(IDataService dataService)
         {
+
+            AddSquareCommand = new RelayCommand(AddSquare);
+            AddCircleCommand = new RelayCommand(AddCircle);
+            AddTriangleCommand = new RelayCommand(AddTriangle);
+
             _dataService = dataService;
             _dataService.GetData(
                 (item, error) =>
@@ -53,6 +68,21 @@ namespace ActivityDiagram.ViewModel
 
                     WelcomeTitle = item.Title;
                 });
+        }
+
+        private void AddSquare()
+        {
+           // undoRedoController.AddAndExecute(new AddShapeCommand(Shapes, new Shape()));
+        }
+
+        private void AddCircle()
+        {
+            // undoRedoController.AddAndExecute(new AddShapeCommand(Shapes, new Shape()));
+        }
+
+        private void AddTriangle()
+        {
+            // undoRedoController.AddAndExecute(new AddShapeCommand(Shapes, new Shape()));
         }
 
         ////public override void Cleanup()

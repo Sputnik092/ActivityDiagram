@@ -22,7 +22,7 @@ namespace ActivityDiagram.View.Shapes
     {
         public SqaureUserControl()
         {
-            InitializeComponent();
+           // InitializeComponent();
         }
     }
 }
