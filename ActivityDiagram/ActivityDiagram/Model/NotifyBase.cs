@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ActivityDiagram.Model
 {
-    abstract class NotifyBase : INotifyPropertyChanged
+    public abstract class NotifyBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

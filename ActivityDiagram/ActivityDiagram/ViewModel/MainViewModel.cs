@@ -28,6 +28,8 @@ namespace ActivityDiagram.ViewModel
     public class MainViewModel : ViewModelBase
     {
 
+        public ObservableCollection<Rectangle> Rectangles { get; set; }
+
         public ICommand AddSquareCommand { get; }
         public ICommand AddCircleCommand { get; }
         public ICommand AddTriangleCommand { get; }
@@ -51,6 +53,8 @@ namespace ActivityDiagram.ViewModel
         public MainViewModel()
         {
 
+            Rectangles = new ObservableCollection<Rectangle>();
+
             AddSquareCommand = new RelayCommand(AddSquare);
             AddCircleCommand = new RelayCommand(AddCircle);
             AddTriangleCommand = new RelayCommand(AddTriangle);
@@ -62,7 +66,8 @@ namespace ActivityDiagram.ViewModel
 
         private void AddSquare()
         {
-           // undoRedoController.AddAndExecute(new AddShapeCommand(Shapes, new Shape()));
+            System.Console.WriteLine("Add!");
+            undoRedoController.AddAndExecute(new AddSquareCommand(Rectangles, new Rectangle()));
         }
 
         private void AddCircle()

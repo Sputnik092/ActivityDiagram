@@ -75,7 +75,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\AddCircleCommand.cs" />
+    <Compile Include="Command\AddSquareCommand.cs" />
+    <Compile Include="Command\AddTriangleCommand.cs" />
     <Compile Include="Command\IUndoRedoCommand.cs" />
+    <Compile Include="Model\NotifyBase.cs" />
     <Compile Include="Command\UndoRedoController.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Model\DataItem.cs" />
