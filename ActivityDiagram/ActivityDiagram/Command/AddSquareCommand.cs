@@ -10,6 +10,7 @@ namespace ActivityDiagram.Command
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
+
     public class AddSquareCommand : IUndoRedoCommand
     {
         // Regions can be used to make code foldable (minus/plus sign to the left).
@@ -29,7 +30,7 @@ namespace ActivityDiagram.Command
 
         #region Constructor
 
-        // For changing the current state of the diagram.
+   
         public AddSquareCommand(ObservableCollection<Rectangle> _rectangles, Rectangle _rectangle)
         {
             rectangles = _rectangles;
@@ -40,14 +41,14 @@ namespace ActivityDiagram.Command
 
         #region Methods
 
-        // For doing and redoing the command.
+   
         public void Execute()
         {
             System.Console.WriteLine("Execute!");
             rectangles.Add(rectangle);
         }
 
-        // For undoing the command.
+  
         public void UnExecute()
         {
             rectangles.Remove(rectangle);

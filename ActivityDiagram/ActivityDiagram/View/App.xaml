@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:ActivityDiagram.ViewModel"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:View="clr-namespace:ActivityDiagram.View.Shapes"
+             xmlns:ViewShapes="clr-namespace:ActivityDiagram.View.Shapes"
              xmlns:Model="clr-namespace:ActivityDiagram.Model"
 			 xmlns:ignore="http://www.galasoft.ch/ignore"
              StartupUri="MainWindow.xaml"
@@ -15,25 +15,25 @@
 
         <DataTemplate DataType="{x:Type Model:Rectangle}">
             <Canvas>
-                <View:RectangleUserControl/>
+                <ViewShapes:RectangleUserControl/>
             </Canvas>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type Model:Circle}">
             <Canvas>
-                <View:CircleUserControl/>
+                <ViewShapes:CircleUserControl/>
             </Canvas>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type Model:Triangle}">
             <Canvas>
-                <View:TriangleUserControl/>
+                <ViewShapes:TriangleUserControl/>
             </Canvas>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type Model:Pentagon}">
             <Canvas>
-                <View:PentagonUserControl/>
+                <ViewShapes:PentagonUserControl/>
             </Canvas>
         </DataTemplate>
 

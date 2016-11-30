@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using ActivityDiagram.Model;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Command;
+//using GalaSoft.MvvmLight.Command;
 using ActivityDiagram.Command;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using GalaSoft.MvvmLight.CommandWpf;
 
 
 namespace ActivityDiagram.ViewModel
@@ -53,7 +54,8 @@ namespace ActivityDiagram.ViewModel
         public MainViewModel()
         {
 
-            Rectangles = new ObservableCollection<Rectangle>();
+            Rectangles = new ObservableCollection<Rectangle>(){
+                new Rectangle() { X = 30, Y = 40, Width = 80, Height = 80 } };
 
             AddSquareCommand = new RelayCommand(AddSquare);
             AddCircleCommand = new RelayCommand(AddCircle);
