@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace ActivityDiagram.Model
 {
-    public class Rectangle
+    public class Rectangle : NotifyBase
     {
         private static int counter = 0;
 
@@ -147,7 +148,7 @@ namespace ActivityDiagram.Model
 
         // Constructor.
         // The constructor is in this case used to set the default values for the properties.
-        public Shape()
+        public Rectangle()
         {
             // This just means that the integer field called counter is incremented before its value is used to set the Number integer property.
             Number = ++counter;
@@ -162,4 +163,4 @@ namespace ActivityDiagram.Model
 
 }
 
-}
+
