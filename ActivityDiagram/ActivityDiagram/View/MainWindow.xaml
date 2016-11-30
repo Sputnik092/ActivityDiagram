@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:View="clr-namespace:ActivityDiagram.View"
+        xmlns:ViewModel="clr-namespace:ActivityDiagram.ViewModel"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
         Height="420"
@@ -11,13 +12,6 @@
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Skins/MainSkin.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
 
     <Grid x:Name="LayoutRoot" Width="400" >
 
@@ -27,7 +21,7 @@
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
             <View:LeftPanel/>
             <Grid Width="133" Margin="0,20,0,0" Background="#5FDAD8">
-
+                <ItemsControl ItemsSource="{Binding Rectangles}"/>
             </Grid>
             <View:RightPanel/>
 
