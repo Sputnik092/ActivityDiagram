@@ -2,6 +2,17 @@
 using ActivityDiagram.Model;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
+using ActivityDiagram.Command;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+
 
 namespace ActivityDiagram.ViewModel
 {
@@ -21,53 +32,32 @@ namespace ActivityDiagram.ViewModel
         public ICommand AddCircleCommand { get; }
         public ICommand AddTriangleCommand { get; }
 
-        private readonly IDataService _dataService;
 
-        /// <summary>
-        /// The <see cref="WelcomeTitle" /> property's name.
-        /// </summary>
-        public const string WelcomeTitlePropertyName = "WelcomeTitle";
+        private UndoRedoController undoRedoController = UndoRedoController.Instance;
 
-        private string _welcomeTitle = string.Empty;
+
+        public ICommand UndoCommand { get; }
+        public ICommand RedoCommand { get; }
 
         /// <summary>
         /// Gets the WelcomeTitle property.
         /// Changes to that property's value raise the PropertyChanged event. 
         /// </summary>
-        public string WelcomeTitle
-        {
-            get
-            {
-                return _welcomeTitle;
-            }
-            set
-            {
-                Set(ref _welcomeTitle, value);
-            }
-        }
+    
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IDataService dataService)
+        public MainViewModel()
         {
 
             AddSquareCommand = new RelayCommand(AddSquare);
             AddCircleCommand = new RelayCommand(AddCircle);
             AddTriangleCommand = new RelayCommand(AddTriangle);
 
-            _dataService = dataService;
-            _dataService.GetData(
-                (item, error) =>
-                {
-                    if (error != null)
-                    {
-                        // Report error here
-                        return;
-                    }
+            UndoCommand = new RelayCommand(undoRedoController.Undo, undoRedoController.CanUndo);
+            RedoCommand = new RelayCommand(undoRedoController.Redo, undoRedoController.CanRedo);
 
-                    WelcomeTitle = item.Title;
-                });
         }
 
         private void AddSquare()

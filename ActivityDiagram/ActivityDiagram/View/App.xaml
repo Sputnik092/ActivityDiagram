@@ -4,12 +4,39 @@
              xmlns:vm="clr-namespace:ActivityDiagram.ViewModel"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:View="clr-namespace:ActivityDiagram.View.Shapes"
+             xmlns:Model="clr-namespace:ActivityDiagram.Model"
 			 xmlns:ignore="http://www.galasoft.ch/ignore"
              StartupUri="MainWindow.xaml"
              mc:Ignorable="d ignore">
     
     <Application.Resources>
         <!--Global View Model Locator-->
+
+        <DataTemplate DataType="{x:Type Model:Rectangle}">
+            <Canvas>
+                <View:RectangleUserControl/>
+            </Canvas>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type Model:Circle}">
+            <Canvas>
+                <View:CircleUserControl/>
+            </Canvas>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type Model:Triangle}">
+            <Canvas>
+                <View:TriangleUserControl/>
+            </Canvas>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type Model:Pentagon}">
+            <Canvas>
+                <View:PentagonUserControl/>
+            </Canvas>
+        </DataTemplate>
+
         <vm:ViewModelLocator x:Key="Locator"
                              d:IsDataSource="True" />
         

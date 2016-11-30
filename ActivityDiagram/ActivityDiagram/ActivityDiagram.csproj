@@ -81,6 +81,10 @@
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\IDataService.cs" />
+    <Compile Include="Model\Triangle.cs" />
+    <Compile Include="Model\Pentagon.cs" />
+    <Compile Include="Model\Circle.cs" />
+    <Compile Include="Model\Rectangle.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\DialogView.cs" />
