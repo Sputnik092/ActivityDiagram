@@ -86,6 +86,7 @@
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\IDataService.cs" />
     <Compile Include="Model\Line.cs" />
+    <Compile Include="Model\NotifyBase.cs" />
     <Compile Include="Model\Triangle.cs" />
     <Compile Include="Model\Pentagon.cs" />
     <Compile Include="Model\Circle.cs" />
