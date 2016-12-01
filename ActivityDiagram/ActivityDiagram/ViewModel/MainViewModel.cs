@@ -144,7 +144,7 @@ namespace ActivityDiagram.ViewModel
                 var circle = TargetCircle(e);
                 // The mouse position relative to the target of the mouse event.
                 var mousePosition = RelativeMousePosition(e);
-
+                // temp
                 // The Shape is moved by the offset between the original and current mouse position.
                 // The View (GUI) is then notified by the Shape, that its properties have changed.
                 circle.X = initialCirclePosition.X + (mousePosition.X - initialMousePosition.X);
