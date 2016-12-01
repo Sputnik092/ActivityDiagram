@@ -66,11 +66,9 @@ namespace ActivityDiagram.ViewModel
         /// </summary>
 
         // Keeps track of the state, depending on whether a line is being added or not.
-        private bool isAddingLine;
         // Used for saving the shape that a line is drawn from, while it is being drawn.
         private Circle addingLineFrom;
 
-        public double ModeOpacity => isAddingLine ? 0.4 : 1.0;
 
         
 
