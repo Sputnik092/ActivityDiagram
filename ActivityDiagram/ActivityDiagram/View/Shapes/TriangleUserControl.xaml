@@ -10,6 +10,6 @@
     <Grid>
             <Polygon Points="100,100 0,100 50,0" Stroke="Black" StrokeThickness="4">
             <!-- Code needed for mouse interaction -->
-        </Polygon>
+            </Polygon>
     </Grid>
 </UserControl>

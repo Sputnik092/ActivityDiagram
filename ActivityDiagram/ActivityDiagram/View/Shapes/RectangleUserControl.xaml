@@ -8,9 +8,6 @@
              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}" Width="{Binding Width}" Height="{Binding Height}" 
              d:DesignHeight="100" d:DesignWidth="100">
     <Grid>
-         <StackPanel x:Name="stack">
-        <TextBlock Text="{Binding ElementName=stack, Path=InvalidPath}" />
-    </StackPanel>
         <Line Stroke="Red" StrokeThickness="5" X1="0" Y1="{Binding Height}" X2="{Binding Width}" Y2="{Binding Height}" />
         <Rectangle Stroke="Black" StrokeThickness="4">
             <!-- Needs mouse interaction code -->
