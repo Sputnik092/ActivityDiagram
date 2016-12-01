@@ -81,13 +81,15 @@ namespace ActivityDiagram.ViewModel
         {
 
             Rectangles = new ObservableCollection<Rectangle>(){
-                 new Rectangle() { X = 30, Y = 40, Width = 100, Height = 100 } 
+                //  new Rectangle() { X = 30, Y = 40, Width = 80, Height = 80 } 
             };
 
             Circles = new ObservableCollection<Circle>(){
-                new Circle() { X = 30, Y = 40, Width = 70, Height = 100 },
-                new Circle() { X = 50, Y = 40, Width = 50, Height = 50 }
+                new Circle() { X = 30, Y = 40, Width = 80, Height = 100 }, 
+                new Circle()  { X = 30, Y = 40, Width = 50, Height = 50 }
             };
+
+          
 
             Triangles = new ObservableCollection<Triangle>(){
                 new Triangle() { X = 30, Y = 40, Width = 100, Height = 100 }
@@ -105,7 +107,7 @@ namespace ActivityDiagram.ViewModel
             MouseUpCircleCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpCircle);
 
             Lines = new ObservableCollection<Line>() {
-                 
+                new Line() { From = Circles.ElementAt(0), To = Circles.ElementAt(1) }
             };
 
             AddLineCommand = new RelayCommand(AddLine);
@@ -229,11 +231,7 @@ namespace ActivityDiagram.ViewModel
                 //  by using a MoveNodeCommand to move it.
                 // The MoveNodeCommand is given the offset that it should be moved relative to its original position, 
                 //  and with respect to the Undo/Redo functionality the Shape has only been moved once, with this Command.
-                if (initialCirclePosition.X + mousePosition.X > 0)
-                {
-                    undoRedoController.AddAndExecute(new MoveCircleCommand(circle, mousePosition.X - initialMousePosition.X, mousePosition.Y - initialMousePosition.Y));
-                }
-                
+                undoRedoController.AddAndExecute(new MoveCircleCommand(circle, mousePosition.X - initialMousePosition.X, mousePosition.Y - initialMousePosition.Y));
 
                 // The mouse is released, as the move operation is done, so it can be used by other controls.
                 e.MouseDevice.Target.ReleaseMouseCapture();
