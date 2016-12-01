@@ -24,6 +24,7 @@
                 <ItemsControl ItemsSource="{Binding Rectangles}"/>
                 <ItemsControl ItemsSource="{Binding Circles}"/>
                 <ItemsControl ItemsSource="{Binding Triangles}"/>
+                <ItemsControl ItemsSource="{Binding Lines}"/>
             </Grid>
             <View:RightPanel/>
 
