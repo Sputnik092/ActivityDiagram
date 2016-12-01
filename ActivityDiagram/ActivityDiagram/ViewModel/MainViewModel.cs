@@ -43,6 +43,8 @@ namespace ActivityDiagram.ViewModel
 
         public ObservableCollection<Line> Lines { get; set; }
 
+
+      
         public ICommand AddSquareCommand { get; }
         public ICommand AddCircleCommand { get; }
         public ICommand AddTriangleCommand { get; }
@@ -52,6 +54,7 @@ namespace ActivityDiagram.ViewModel
 
         private UndoRedoController undoRedoController = UndoRedoController.Instance;
 
+        public ICommand ClearCanvasCommand { get; }
 
         public ICommand UndoCommand { get; }
         public ICommand RedoCommand { get; }
@@ -67,7 +70,7 @@ namespace ActivityDiagram.ViewModel
 
         // Keeps track of the state, depending on whether a line is being added or not.
         // Used for saving the shape that a line is drawn from, while it is being drawn.
-        private Circle addingLineFrom;
+
 
 
         
@@ -99,6 +102,8 @@ namespace ActivityDiagram.ViewModel
             AddCircleCommand = new RelayCommand(AddCircle);
             AddTriangleCommand = new RelayCommand(AddTriangle);
 
+            ClearCanvasCommand = new RelayCommand(ClearCanvas);
+
             UndoCommand = new RelayCommand(undoRedoController.Undo, undoRedoController.CanUndo);
             RedoCommand = new RelayCommand(undoRedoController.Redo, undoRedoController.CanRedo);
 
@@ -112,6 +117,12 @@ namespace ActivityDiagram.ViewModel
 
             AddLineCommand = new RelayCommand(AddLine);
             RemoveLinesCommand = new RelayCommand<IList>(RemoveLines, CanRemoveLines);
+
+        }
+
+        private void ClearCanvas()
+        {
+            undoRedoController.ClearAndExecute(new ClearCanvasCommand(Circles, Rectangles, Triangles, Lines));
 
         }
 
@@ -227,11 +238,15 @@ namespace ActivityDiagram.ViewModel
                 circle.X = initialCirclePosition.X;
                 circle.Y = initialCirclePosition.Y;
 
+                if (initialCirclePosition.X + (mousePosition.X-initialMousePosition.X) > 0)
+                {
+                    undoRedoController.AddAndExecute(new MoveCircleCommand(circle, mousePosition.X - initialMousePosition.X, mousePosition.Y - initialMousePosition.Y));
+                }
                 // Now that the Move Shape operation is over, the Shape is moved to the final position, 
                 //  by using a MoveNodeCommand to move it.
                 // The MoveNodeCommand is given the offset that it should be moved relative to its original position, 
                 //  and with respect to the Undo/Redo functionality the Shape has only been moved once, with this Command.
-                undoRedoController.AddAndExecute(new MoveCircleCommand(circle, mousePosition.X - initialMousePosition.X, mousePosition.Y - initialMousePosition.Y));
+
 
                 // The mouse is released, as the move operation is done, so it can be used by other controls.
                 e.MouseDevice.Target.ReleaseMouseCapture();

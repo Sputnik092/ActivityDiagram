@@ -36,6 +36,13 @@ namespace ActivityDiagram.Command
             command.Execute();
         }
 
+        public void ClearAndExecute(IUndoRedoCommand command)
+        {
+            undoStack.Clear();
+            redoStack.Clear();
+            command.Execute();
+        }
+
         public bool CanUndo() => undoStack.Any();
 
         public void Undo()

@@ -9,7 +9,7 @@
     <StackPanel>
         <Menu x:Name="menu" Height="20" Background="#FFF18D8D">
             <MenuItem x:Name="mnufile" Header="File">
-                <MenuItem x:Name="mnunew" Header="New" Height="19" Command="ApplicationCommands.New">
+                <MenuItem x:Name="mnunew" Header="New" Height="19" Command="{Binding ClearCanvasCommand}">
              
                 </MenuItem>
                 <MenuItem x:Name="mnuSave"  Header="Save" Command="{Binding Command}" />
