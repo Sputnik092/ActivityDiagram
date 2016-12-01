@@ -65,7 +65,7 @@ namespace ActivityDiagram.ViewModel
         /// Changes to that property's value raise the PropertyChanged event. 
         /// </summary>
 
-      
+        // Keeps track of the state, depending on whether a line is being added or not.
         // Used for saving the shape that a line is drawn from, while it is being drawn.
         private Circle addingLineFrom;
 
@@ -166,11 +166,16 @@ namespace ActivityDiagram.ViewModel
                 var circle = TargetCircle(e);
                 // The mouse position relative to the target of the mouse event.
                 var mousePosition = RelativeMousePosition(e);
-
+                // temp
                 // The Shape is moved by the offset between the original and current mouse position.
                 // The View (GUI) is then notified by the Shape, that its properties have changed.
-                circle.X = initialCirclePosition.X + (mousePosition.X - initialMousePosition.X);
-                circle.Y = initialCirclePosition.Y + (mousePosition.Y - initialMousePosition.Y);
+
+                if (initialCirclePosition.X + (mousePosition.X - initialMousePosition.X) > 0)
+                {
+                    circle.X = initialCirclePosition.X + (mousePosition.X - initialMousePosition.X);
+                    circle.Y = initialCirclePosition.Y + (mousePosition.Y - initialMousePosition.Y);
+                }
+
             }
         }
 
