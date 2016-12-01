@@ -30,6 +30,8 @@ namespace ActivityDiagram.ViewModel
     {
 
         public ObservableCollection<Rectangle> Rectangles { get; set; }
+        public ObservableCollection<Circle> Circles { get; set; }
+        public ObservableCollection<Triangle> Triangles { get; set; }
 
         public ICommand AddSquareCommand { get; }
         public ICommand AddCircleCommand { get; }
@@ -57,6 +59,12 @@ namespace ActivityDiagram.ViewModel
             Rectangles = new ObservableCollection<Rectangle>(){
                 new Rectangle() { X = 30, Y = 40, Width = 80, Height = 80 } };
 
+            Circles = new ObservableCollection<Circle>(){
+                new Circle() { X = 30, Y = 40, Width = 80, Height = 80 } };
+
+            Triangles = new ObservableCollection<Triangle>(){
+                new Triangle() { X = 30, Y = 40, Width = 80, Height = 80 } };
+
             AddSquareCommand = new RelayCommand(AddSquare);
             AddCircleCommand = new RelayCommand(AddCircle);
             AddTriangleCommand = new RelayCommand(AddTriangle);
@@ -74,12 +82,12 @@ namespace ActivityDiagram.ViewModel
 
         private void AddCircle()
         {
-            // undoRedoController.AddAndExecute(new AddShapeCommand(Shapes, new Shape()));
+             undoRedoController.AddAndExecute(new AddCircleCommand(Circles, new Circle()));
         }
 
         private void AddTriangle()
         {
-            // undoRedoController.AddAndExecute(new AddShapeCommand(Shapes, new Shape()));
+            undoRedoController.AddAndExecute(new AddTriangleCommand(Triangles, new Triangle()));
         }
 
         ////public override void Cleanup()

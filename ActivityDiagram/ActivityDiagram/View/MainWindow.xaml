@@ -15,13 +15,15 @@
 
     <Grid x:Name="LayoutRoot" Width="400" >
 
-        <StackPanel Orientation="Horizontal" Background="#FFF18D8D" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="{Binding Width, ElementName=LayoutRoot}" Grid.ColumnSpan="2">
+        <StackPanel Orientation="Horizontal" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="{Binding Width, ElementName=LayoutRoot}" Grid.ColumnSpan="2">
             <View:Menu/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
             <View:LeftPanel/>
-            <Grid Width="133" Margin="0,20,0,0" Background="#5FDAD8">
+            <Grid Width="133" Margin="0,20,0,0" >
                 <ItemsControl ItemsSource="{Binding Rectangles}"/>
+                <ItemsControl ItemsSource="{Binding Circles}"/>
+                <ItemsControl ItemsSource="{Binding Triangles}"/>
             </Grid>
             <View:RightPanel/>
 
