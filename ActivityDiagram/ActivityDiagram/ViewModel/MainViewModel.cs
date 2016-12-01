@@ -57,7 +57,7 @@ namespace ActivityDiagram.ViewModel
         {
 
             Rectangles = new ObservableCollection<Rectangle>(){
-                new Rectangle() { X = 30, Y = 40, Width = 80, Height = 80 } };
+                new Rectangle() { X = 30, Y = 40, Width = 200, Height = 80 } };
 
             Circles = new ObservableCollection<Circle>(){
                 new Circle() { X = 30, Y = 40, Width = 80, Height = 80 } };
@@ -76,7 +76,6 @@ namespace ActivityDiagram.ViewModel
 
         private void AddSquare()
         {
-            System.Console.WriteLine("Add!");
             undoRedoController.AddAndExecute(new AddSquareCommand(Rectangles, new Rectangle()));
         }
 

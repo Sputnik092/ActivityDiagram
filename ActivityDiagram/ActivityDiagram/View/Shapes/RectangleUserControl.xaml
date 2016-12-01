@@ -10,7 +10,7 @@
              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}" Width="{Binding Width}" Height="{Binding Height}" 
              d:DesignHeight="100" d:DesignWidth="100">
     <Grid>
-        <Rectangle Stroke="Black" StrokeThickness="4">
+        <Rectangle Stroke="Black" StrokeThickness="4" Width="100" Height="75">
             <!-- Needs mouse interaction code -->
         </Rectangle>
     </Grid>
