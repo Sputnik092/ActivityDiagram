@@ -18,7 +18,7 @@
                     </Button.Template>
                 </Button>
 
-                <Button Height="50" Width="50" Click="Triangle_Button_Click">
+                <Button Height="50" Width="50" Command="{Binding AddTriangleCommand}">
                     <Button.Template>
                         <ControlTemplate>
                             <Image Source="http://etc.usf.edu/clipart/40600/40694/pb_tri_40694_lg.gif"/>
@@ -26,7 +26,7 @@
                     </Button.Template>
                 </Button>
 
-                <Button Height="50" Width="50" Click="Circle_Button_Click">
+                <Button Height="50" Width="50" Command="{Binding AddCircleCommand}">
                     <Button.Template>
                         <ControlTemplate>
                             <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/2000px-Circle_-_black_simple.svg.png"/>

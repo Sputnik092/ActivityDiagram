@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100">
     <Grid>
-        <Ellipse Stroke="Black" StrokeThickness="4">
+        <Ellipse Stroke="Black" StrokeThickness="4" Width="100" Height="100">
             <!-- From the Demos for mouse interaction, needs additional code to be relevant -->
             <!-- <i:interaction.triggers>
                 <i:eventtrigger eventname="mousedown">
