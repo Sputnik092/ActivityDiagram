@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ActivityDiagram.View"
              mc:Ignorable="d" 
              d:DesignWidth="133">
-    <StackPanel x:Name="shapepnl" Width="133" Background="#FFFFFF" Height="350">
+    <StackPanel x:Name="shapepnl" Width="133" Background="#FFFFFF" Height="350" Margin="0,20,0,0">
         <ScrollViewer x:Name="shapescroVwr"  Height="{Binding Height, ElementName=shapepnl}">
 
             <WrapPanel Orientation="Horizontal" VerticalAlignment="Top">
