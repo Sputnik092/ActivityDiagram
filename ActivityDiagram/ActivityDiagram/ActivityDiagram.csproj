@@ -94,9 +94,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\AddCircleCommand.cs" />
+    <Compile Include="Command\AddLineCommand.cs" />
     <Compile Include="Command\AddSquareCommand.cs" />
     <Compile Include="Command\AddTriangleCommand.cs" />
     <Compile Include="Command\IUndoRedoCommand.cs" />
+    <Compile Include="Command\RemoveLinesCommand.cs" />
     <Compile Include="Command\UndoRedoController.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Model\DataItem.cs" />

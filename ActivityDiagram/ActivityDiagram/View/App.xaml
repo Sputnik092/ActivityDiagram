@@ -6,6 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ViewShapes="clr-namespace:ActivityDiagram.View.Shapes"
              xmlns:Model="clr-namespace:ActivityDiagram.Model"
+             xmlns:View="clr-namespace:ActivityDiagram.View"
 			 xmlns:ignore="http://www.galasoft.ch/ignore"
              StartupUri="MainWindow.xaml"
              mc:Ignorable="d ignore">
@@ -34,6 +35,11 @@
         <DataTemplate DataType="{x:Type Model:Pentagon}">
             <Canvas>
                 <ViewShapes:PentagonUserControl/>
+            </Canvas>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type Model:Line}">
+            <Canvas>
+                <ViewShapes:LineUserControl/>
             </Canvas>
         </DataTemplate>
 

@@ -33,9 +33,13 @@ namespace ActivityDiagram.ViewModel
         public ObservableCollection<Circle> Circles { get; set; }
         public ObservableCollection<Triangle> Triangles { get; set; }
 
+        public ObservableCollection<Line> Lines { get; set; }
+
         public ICommand AddSquareCommand { get; }
         public ICommand AddCircleCommand { get; }
         public ICommand AddTriangleCommand { get; }
+        public ICommand AddLineCommand { get; }
+        public ICommand RemoveLinesCommand { get; }
 
 
         private UndoRedoController undoRedoController = UndoRedoController.Instance;
@@ -48,7 +52,15 @@ namespace ActivityDiagram.ViewModel
         /// Gets the WelcomeTitle property.
         /// Changes to that property's value raise the PropertyChanged event. 
         /// </summary>
-    
+
+        // Keeps track of the state, depending on whether a line is being added or not.
+        private bool isAddingLine;
+        // Used for saving the shape that a line is drawn from, while it is being drawn.
+        private Circle addingLineFrom;
+
+        public double ModeOpacity => isAddingLine ? 0.4 : 1.0;
+
+        
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -72,6 +84,13 @@ namespace ActivityDiagram.ViewModel
             UndoCommand = new RelayCommand(undoRedoController.Undo, undoRedoController.CanUndo);
             RedoCommand = new RelayCommand(undoRedoController.Redo, undoRedoController.CanRedo);
 
+            Lines = new ObservableCollection<Line>() {
+                new Line() { From = Circles.ElementAt(0), To = Circles.ElementAt(1) }
+            };
+
+            AddLineCommand = new RelayCommand(AddLine);
+            RemoveLinesCommand = new RelayCommand<IList>(RemoveLines, CanRemoveLines);
+
         }
 
         private void AddSquare()
@@ -88,6 +107,29 @@ namespace ActivityDiagram.ViewModel
         {
             undoRedoController.AddAndExecute(new AddTriangleCommand(Triangles, new Triangle()));
         }
+
+        private void AddLine()
+        {
+            isAddingLine = true;
+            RaisePropertyChanged(() => ModeOpacity);
+        }
+
+        private bool CanRemoveLines(IList _edges) => _edges.Count >= 1;
+
+        private void RemoveLines(IList _lines)
+        {
+            undoRedoController.AddAndExecute(new RemoveLinesCommand(Lines, _lines.Cast<Line>().ToList()));
+        }
+
+        private Circle TargetShape(MouseEventArgs e)
+        {
+            // Here the visual element that the mouse is captured by is retrieved.
+            var shapeVisualElement = (FrameworkElement)e.MouseDevice.Target;
+            // From the shapes visual element, the Shape object which is the DataContext is retrieved.
+            return (Circle)shapeVisualElement.DataContext;
+        }
+
+
 
         ////public override void Cleanup()
         ////{
