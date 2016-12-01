@@ -65,12 +65,10 @@ namespace ActivityDiagram.ViewModel
         /// Changes to that property's value raise the PropertyChanged event. 
         /// </summary>
 
-        // Keeps track of the state, depending on whether a line is being added or not.
-        private bool isAddingLine;
+      
         // Used for saving the shape that a line is drawn from, while it is being drawn.
         private Circle addingLineFrom;
 
-        public double ModeOpacity => isAddingLine ? 0.4 : 1.0;
 
         
 
@@ -87,8 +85,11 @@ namespace ActivityDiagram.ViewModel
             };
 
             Circles = new ObservableCollection<Circle>(){
-                new Circle() { X = 30, Y = 40, Width = 70, Height = 100 } 
+                new Circle() { X = 30, Y = 40, Width = 80, Height = 100 }, 
+                new Circle()  { X = 30, Y = 40, Width = 50, Height = 50 }
             };
+
+          
 
             Triangles = new ObservableCollection<Triangle>(){
                 new Triangle() { X = 30, Y = 40, Width = 100, Height = 100 }
