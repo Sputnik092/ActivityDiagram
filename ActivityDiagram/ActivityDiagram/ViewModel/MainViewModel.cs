@@ -104,7 +104,7 @@ namespace ActivityDiagram.ViewModel
             MouseUpCircleCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpCircle);
 
             Lines = new ObservableCollection<Line>() {
-                new Line() { From = Circles.ElementAt(0), To = Circles.ElementAt(1) }
+                 
             };
 
             AddLineCommand = new RelayCommand(AddLine);
@@ -166,8 +166,13 @@ namespace ActivityDiagram.ViewModel
                 // temp
                 // The Shape is moved by the offset between the original and current mouse position.
                 // The View (GUI) is then notified by the Shape, that its properties have changed.
-                circle.X = initialCirclePosition.X + (mousePosition.X - initialMousePosition.X);
-                circle.Y = initialCirclePosition.Y + (mousePosition.Y - initialMousePosition.Y);
+
+                if (initialCirclePosition.X + (mousePosition.X - initialMousePosition.X) > 0)
+                {
+                    circle.X = initialCirclePosition.X + (mousePosition.X - initialMousePosition.X);
+                    circle.Y = initialCirclePosition.Y + (mousePosition.Y - initialMousePosition.Y);
+                }
+
             }
         }
 
