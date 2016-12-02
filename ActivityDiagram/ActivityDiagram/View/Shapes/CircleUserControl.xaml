@@ -34,13 +34,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="2" Text="Text" TextAlignment="Center" FontWeight="Bold">
+            <TextBox Grid.Row="2" BorderThickness="0" Text="Text" TextAlignment="Center" Width="90" FontWeight="Bold" >
                  <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <cmd:EventToCommand Command="{Binding DataContext.DoubleClickTextBlock, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            </TextBlock>
+            </TextBox>
         </Grid>
     </Grid>
 </UserControl>

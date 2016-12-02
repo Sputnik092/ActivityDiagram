@@ -11,7 +11,7 @@ namespace ActivityDiagram.Command
     /// </para>
     /// </summary>
 
-    public class AddSquareCommand : IUndoRedoCommand
+    public class CopyCommand : IUndoRedoCommand
     {
         // Regions can be used to make code foldable (minus/plus sign to the left).
         #region Fields
@@ -21,37 +21,40 @@ namespace ActivityDiagram.Command
         //  therefore when this collection is changed in a object of this class, 
         //  it also changes the collection that the MainViewModel uses.
         // For a description of an ObservableCollection see the MainViewModel class.
-        private ObservableCollection<Rectangle> rectangles;
+        private ObservableCollection<Circle> circles;
         // The 'shape' field holds a new shape, that is added to the 'shapes' collection, 
         //  and if undone, it is removed from the collection.
-        private Rectangle rectangle;
 
         #endregion
 
         #region Constructor
 
-   
-        public AddSquareCommand(ObservableCollection<Rectangle> _rectangles, Rectangle _rectangle)
+
+        public CopyCommand(ObservableCollection<Circle> _circles)
         {
-            rectangles = _rectangles;
-            rectangle = _rectangle;
+            circles = _circles;
         }
 
         #endregion
 
         #region Methods
 
-   
+
         public void Execute()
         {
             System.Console.WriteLine("Execute!");
-            rectangles.Add(rectangle);
+            for (int i = 0; i < circles.Count; i++)
+            {
+                if (circles[i].IsSelected == true)
+                {
+
+                }
+            }
         }
 
-  
+
         public void UnExecute()
         {
-            rectangles.Remove(rectangle);
         }
 
         #endregion

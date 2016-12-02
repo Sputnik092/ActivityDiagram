@@ -78,6 +78,8 @@ namespace ActivityDiagram.ViewModel
         public ObservableCollection<Circle> Circles { get; set; }
         public ObservableCollection<Triangle> Triangles { get; set; }
 
+        public ObservableCollection<Shape> Shapes { get; set; }
+
         public ObservableCollection<Line> Lines { get; set; }
 
 
@@ -97,6 +99,8 @@ namespace ActivityDiagram.ViewModel
 
         public ICommand UndoCommand { get; }
         public ICommand RedoCommand { get; }
+
+        public ICommand CopyCommand { get; }
 
         public ICommand MouseDownCircleCommand { get; }
         public ICommand MouseMoveCircleCommand { get; }
@@ -140,7 +144,15 @@ namespace ActivityDiagram.ViewModel
             Triangles = new ObservableCollection<Triangle>(){
                 new Triangle() { X = 30, Y = 40, Width = 100, Height = 100 }
             };
-
+            /*
+            Shapes = new ObservableCollection<Shape>()
+            {
+                new Circle() { X = 30, Y = 40, Width = 120, Height = 140 },
+                new Circle()  { X = 150, Y = 100, Width = 150, Height = 150 },
+                new Rectangle() { X = 30, Y = 40, Width = 80, Height = 20 },
+                new Triangle() { X = 30, Y = 40, Width = 100, Height = 100 }
+            };
+            */
             AddSquareCommand = new RelayCommand(AddSquare);
             AddCircleCommand = new RelayCommand(AddCircle);
             AddTriangleCommand = new RelayCommand(AddTriangle);
@@ -150,6 +162,7 @@ namespace ActivityDiagram.ViewModel
 
             UndoCommand = new RelayCommand(undoRedoController.Undo, undoRedoController.CanUndo);
             RedoCommand = new RelayCommand(undoRedoController.Redo, undoRedoController.CanRedo);
+            CopyCommand = new RelayCommand(Copy);
 
             MouseDownCircleCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownCircle);
             MouseMoveCircleCommand = new RelayCommand<MouseEventArgs>(MouseMoveCircle);
@@ -171,6 +184,11 @@ namespace ActivityDiagram.ViewModel
         {
             undoRedoController.ClearAndExecute(new ClearCanvasCommand(Circles, Rectangles, Triangles, Lines));
 
+        }
+
+        private void Copy()
+        {
+            undoRedoController.AddAndExecute(new CopyCommand(Circles));
         }
 
         private void AddSquare()

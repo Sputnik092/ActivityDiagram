@@ -98,6 +98,7 @@
     <Compile Include="Command\AddSquareCommand.cs" />
     <Compile Include="Command\AddTriangleCommand.cs" />
     <Compile Include="Command\ClearCanvasCommand.cs" />
+    <Compile Include="Command\CopyCommand.cs" />
     <Compile Include="Command\IUndoRedoCommand.cs" />
     <Compile Include="Command\RemoveCircleCommand.cs" />
     <Compile Include="Command\RemoveLinesCommand.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Model\IDataService.cs" />
     <Compile Include="Model\Line.cs" />
     <Compile Include="Model\NotifyBase.cs" />
+    <Compile Include="Model\Shape.cs" />
     <Compile Include="Model\Triangle.cs" />
     <Compile Include="Model\Pentagon.cs" />
     <Compile Include="Model\Circle.cs" />

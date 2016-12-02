@@ -19,7 +19,7 @@
 
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Command="ApplicationCommands.Copy"/>
+                <MenuItem x:Name="Copy" Header="Copy" Command="{Binding CopyCommand}"/>
                 <MenuItem Command="ApplicationCommands.Paste"/>
                 <MenuItem x:Name="Undo" Header="Undo" Command="{Binding UndoCommand}" />
                 <MenuItem  x:Name="Redo" Header="Redo" Command="{Binding RedoCommand}"/>
