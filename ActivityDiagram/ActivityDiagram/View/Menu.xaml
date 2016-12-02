@@ -12,8 +12,7 @@
                 <MenuItem x:Name="mnunew" Header="New" Height="19" Command="{Binding ClearCanvasCommand}">
              
                 </MenuItem>
-                <MenuItem x:Name="mnuSave"  Header="Save" Command="{Binding Command}" />
-
+                <MenuItem x:Name="mnuSave"  Header="Save" Command="{Binding SaveDiagramCommand}"/>
                 <MenuItem Command="ApplicationCommands.SaveAs"/>
                 <MenuItem x:Name="mnuOpen" Header="Open" Click="mnuOpen_Click"/>
 

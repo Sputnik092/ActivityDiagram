@@ -13,7 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using GalaSoft.MvvmLight.CommandWpf;
-
+using Microsoft.Win32;
 
 namespace ActivityDiagram.ViewModel
 {
@@ -28,6 +28,43 @@ namespace ActivityDiagram.ViewModel
    
     public class MainViewModel : ViewModelBase
     {
+
+        public RelayCommand SaveDiagramCommand
+        {
+            get
+            {
+                return _saveDiagramCommand ?? (_saveDiagramCommand = new RelayCommand(() => {
+                    var dialog = new Microsoft.Win32.SaveFileDialog();
+                    if (dialog.ShowDialog() != true)
+                        return;
+                    using (var stream = dialog.OpenFile())
+                    {
+                        //write out file to disk
+                    }
+                }));
+            }
+        }
+
+        public RelayCommand openDiagramCommand
+        {
+            get
+            {
+                return _openDiagramCommand ?? (_openDiagramCommand = new RelayCommand(() => {
+                    var dialog = new Microsoft.Win32.OpenFileDialog();
+                    if (dialog.ShowDialog() != true)
+                        return;
+                    using (var stream = dialog.OpenFile())
+                    {
+                        //write out file to disk
+                    }
+                }));
+            }
+        }
+
+        private RelayCommand _openDiagramCommand;
+
+        private RelayCommand _saveDiagramCommand;
+
         private bool isAddingLine;
 
         private Circle addingLineFromCircle;
@@ -51,8 +88,15 @@ namespace ActivityDiagram.ViewModel
         public ICommand AddLineCommand { get; }
         public ICommand RemoveLinesCommand { get; }
 
+        
 
-        private UndoRedoController undoRedoController = UndoRedoController.Instance;
+       
+
+
+
+
+
+    private UndoRedoController undoRedoController = UndoRedoController.Instance;
 
         public ICommand ClearCanvasCommand { get; }
 
@@ -83,6 +127,8 @@ namespace ActivityDiagram.ViewModel
         public MainViewModel()
         {
 
+           
+
             Rectangles = new ObservableCollection<Rectangle>(){
                 //  new Rectangle() { X = 30, Y = 40, Width = 80, Height = 80 } 
             };
@@ -101,6 +147,7 @@ namespace ActivityDiagram.ViewModel
             AddSquareCommand = new RelayCommand(AddSquare);
             AddCircleCommand = new RelayCommand(AddCircle);
             AddTriangleCommand = new RelayCommand(AddTriangle);
+           
 
             ClearCanvasCommand = new RelayCommand(ClearCanvas);
 

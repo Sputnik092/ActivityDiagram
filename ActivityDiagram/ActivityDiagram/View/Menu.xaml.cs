@@ -1,19 +1,7 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ActivityDiagram.View
 {
@@ -22,8 +10,7 @@ namespace ActivityDiagram.View
     /// </summary>
     public partial class Menu : UserControl
     {
-       
-
+        
 
         public Menu()
         {
@@ -31,7 +18,9 @@ namespace ActivityDiagram.View
    
         }
 
-     
+      
+
+
 
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -42,28 +31,39 @@ namespace ActivityDiagram.View
         
         private void mnuSave_Click(object sender, RoutedEventArgs e)
         {
-           // SaveFileDialog savefiledialog = new SaveFileDialog();
+          //    SaveFileDialog savefiledialog = new SaveFileDialog();
 
-           // savefiledialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
+           //    savefiledialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
 
-           // if (savefiledialog.ShowDialog() == true)
-           // {
-             //   File.WriteAllText(savefiledialog.FileName, txtEditor.Text);
+           //   if (savefiledialog.ShowDialog() == true)
+            //  {
 
-               
+            //    using (Stream s = File.Open(savefiledialog.FileName, FileMode.CreateNew))
+             //   using (StreamWriter sw = new StreamWriter(s))
+             //   {
+            //        sw.Write(RichTextBox.TextInputEvent);
 
+                    //      File.WriteAllText(savefiledialog.FileName, txtEditor.Text);
+
+
+
+            //    }
            // }
-    }
+
+        }
 
         private void mnuOpen_Click(object sender, RoutedEventArgs e)
         {
-          //  OpenFileDialog openfiledialog = new OpenFileDialog();
-           // openfiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+           // OpenFileDialog openfiledialog = new OpenFileDialog();
+            //openfiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-           // if (openfiledialog.ShowDialog()==true)
-           // {
-            //    txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
-           // }
+            //if (openfiledialog.ShowDialog()==true)
+            //{
+             //   string strfilename = openfiledialog.FileName;
+              //  string filetext = File.ReadAllText(strfilename);
+                
+
+            //}
         }
     }
 
