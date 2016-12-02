@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 using ActivityDiagram.Model;
+using System.Collections.Generic;
 
 namespace ActivityDiagram.Command
 {
@@ -11,7 +12,7 @@ namespace ActivityDiagram.Command
     /// </para>
     /// </summary>
 
-    public class AddSquareCommand : IUndoRedoCommand
+    public class RemoveCircleCommand : IUndoRedoCommand
     {
         // Regions can be used to make code foldable (minus/plus sign to the left).
         #region Fields
@@ -21,36 +22,47 @@ namespace ActivityDiagram.Command
         //  therefore when this collection is changed in a object of this class, 
         //  it also changes the collection that the MainViewModel uses.
         // For a description of an ObservableCollection see the MainViewModel class.
-        private ObservableCollection<Rectangle> rectangles;
+        private ObservableCollection<Circle> circles;
         // The 'shape' field holds a new shape, that is added to the 'shapes' collection, 
         //  and if undone, it is removed from the collection.
-        private Rectangle rectangle;
 
         #endregion
 
         #region Constructor
 
-   
-        public AddSquareCommand(ObservableCollection<Rectangle> _rectangles, Rectangle _rectangle)
+
+        public RemoveCircleCommand(ObservableCollection<Circle> _circles)
         {
-            rectangles = _rectangles;
-            rectangle = _rectangle;
+            circles = _circles;
         }
 
         #endregion
 
         #region Methods
 
-   
+
         public void Execute()
         {
-            rectangles.Add(rectangle);
+            System.Console.WriteLine("test");
+            List<int> toBeDeleted = new List<int>();
+            for (int i = 0; i < circles.Count; i++)
+            {
+                
+                if (circles[i].IsSelected == true)
+                {
+                    toBeDeleted.Add(i);
+                }
+            }
+            for (int i = toBeDeleted.Count; i > 0; i++)
+            {
+                circles.RemoveAt(i);
+            }
+
         }
 
-  
+
         public void UnExecute()
         {
-            rectangles.Remove(rectangle);
         }
 
         #endregion

@@ -111,15 +111,10 @@ namespace ActivityDiagram.ViewModel
         public ICommand AddLineCommand { get; }
         public ICommand RemoveLinesCommand { get; }
 
-        
-
-       
+        public ICommand RemoveCircleCommand { get; }
 
 
-
-
-
-    private UndoRedoController undoRedoController = UndoRedoController.Instance;
+        private UndoRedoController undoRedoController = UndoRedoController.Instance;
 
         public ICommand ClearCanvasCommand { get; }
 
@@ -129,6 +124,8 @@ namespace ActivityDiagram.ViewModel
         public ICommand MouseDownCircleCommand { get; }
         public ICommand MouseMoveCircleCommand { get; }
         public ICommand MouseUpCircleCommand { get; }
+
+       // public ICommand DoubleClickTextBlock { get; }
 
         /// <summary>
         /// Gets the WelcomeTitle property.
@@ -153,12 +150,12 @@ namespace ActivityDiagram.ViewModel
            
 
             Rectangles = new ObservableCollection<Rectangle>(){
-                //  new Rectangle() { X = 30, Y = 40, Width = 80, Height = 80 } 
+                  new Rectangle() { X = 30, Y = 40, Width = 80, Height = 20 } 
             };
 
             Circles = new ObservableCollection<Circle>(){
-                new Circle() { X = 30, Y = 40, Width = 80, Height = 100 }, 
-                new Circle()  { X = 30, Y = 40, Width = 50, Height = 50 }
+                new Circle() { X = 30, Y = 40, Width = 120, Height = 140 }, 
+                new Circle()  { X = 150, Y = 100, Width = 150, Height = 150 }
             };
 
           
@@ -183,12 +180,15 @@ namespace ActivityDiagram.ViewModel
             MouseMoveCircleCommand = new RelayCommand<MouseEventArgs>(MouseMoveCircle);
             MouseUpCircleCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpCircle);
 
+           // DoubleClickTextBlock = new RelayCommand<MouseButtonEventArgs>(DoubleClickText);
+
             Lines = new ObservableCollection<Line>() {
                 new Line() { From = Circles.ElementAt(0), To = Circles.ElementAt(1) }
             };
 
             AddLineCommand = new RelayCommand(AddLine);
             RemoveLinesCommand = new RelayCommand<IList>(RemoveLines, CanRemoveLines);
+            RemoveCircleCommand = new RelayCommand(RemoveCircle);
 
         }
 
@@ -218,10 +218,14 @@ namespace ActivityDiagram.ViewModel
             if (!isAddingLine)
             {
                 // The Shape is gotten from the mouse event.
-                var shape = TargetCircle(e);
+                var circle = TargetCircle(e);
+               for (int i = 0; i < Circles.Count(); i++)
+                {
+                    Circles[i].IsSelected = false;
+                }
+                circle.IsSelected = true;
                 // The mouse position relative to the target of the mouse event.
                 var mousePosition = RelativeMousePosition(e);
-                System.Console.WriteLine(mousePosition);
                 // When the shape is moved with the mouse, the MouseMoveShape method is called many times, 
                 //  for each part of the movement.
                 // Therefore to only have 1 Undo/Redo command saved for the whole movement, the initial position is saved, 
@@ -229,7 +233,7 @@ namespace ActivityDiagram.ViewModel
                 //  from when the mouse is released, can become one Undo/Redo command.
                 // The initial shape position is saved to calculate the offset that the shape should be moved.
                 initialMousePosition = mousePosition;
-                initialCirclePosition = new Point(shape.X, shape.Y);
+                initialCirclePosition = new Point(circle.X, circle.Y);
 
                 // The mouse is captured, so the current shape will always be the target of the mouse events, 
                 //  even if the mouse is outside the application window.
@@ -273,15 +277,15 @@ namespace ActivityDiagram.ViewModel
             {
                 // Because a MouseUp event has happened and a Line is currently being drawn, 
                 //  the Shape that the Line is drawn from or to has been selected, and is here retrieved from the event parameters.
-                var shape = TargetCircle(e);
+                var circle = TargetCircle(e);
                 // This checks if this is the first Shape chosen during the Line adding operation, 
                 //  by looking at the addingLineFrom variable, which is empty when no Shapes have previously been choosen.
                 // If this is the first Shape choosen, and if so, the Shape is saved in the AddingLineFrom variable.
                 //  Also the Shape is set as selected, to make it look different visually.
-                if (addingLineFromCircle == null) { addingLineFromCircle = shape; addingLineFromCircle.IsSelected = true; }
+                if (addingLineFromCircle == null) { addingLineFromCircle = circle; addingLineFromCircle.IsSelected = true; }
                 // If this is not the first Shape choosen, and therefore the second, 
                 //  it is checked that the first and second Shape are different.
-                else if (addingLineFromCircle.Number != shape.Number)
+                else if (addingLineFromCircle.Number != circle.Number)
                 {
                     // Now that it has been established that the Line adding operation has been completed succesfully by the user, 
                     //  a Line is added using an 'AddLineCommand', with a new Line given between the two shapes chosen.
@@ -366,6 +370,12 @@ namespace ActivityDiagram.ViewModel
         private void RemoveLines(IList _lines)
         {
             undoRedoController.AddAndExecute(new RemoveLinesCommand(Lines, _lines.Cast<Line>().ToList()));
+        }
+
+        private void RemoveCircle()
+        {
+            System.Console.WriteLine("test2");
+            undoRedoController.AddAndExecute(new RemoveCircleCommand(Circles));
         }
 
         private Circle TargetShape(MouseEventArgs e)

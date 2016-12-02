@@ -26,5 +26,21 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Ellipse>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="2" Text="Text" TextAlignment="Center" FontWeight="Bold">
+                 <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <cmd:EventToCommand Command="{Binding DataContext.DoubleClickTextBlock, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            </TextBlock>
+        </Grid>
     </Grid>
 </UserControl>

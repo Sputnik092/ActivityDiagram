@@ -99,10 +99,12 @@
     <Compile Include="Command\AddTriangleCommand.cs" />
     <Compile Include="Command\ClearCanvasCommand.cs" />
     <Compile Include="Command\IUndoRedoCommand.cs" />
+    <Compile Include="Command\RemoveCircleCommand.cs" />
     <Compile Include="Command\RemoveLinesCommand.cs" />
     <Compile Include="Command\MoveCircleCommand.cs" />
     <Compile Include="Command\UndoRedoController.cs" />
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Model\ConnectionPoint.cs" />
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\IDataService.cs" />
@@ -132,9 +134,6 @@
     </Compile>
     <Compile Include="View\Shapes\PentagonUserControl.xaml.cs">
       <DependentUpon>PentagonUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Shapes\RectangleUserControl.xaml.cs">
-      <DependentUpon>RectangleUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Shapes\TriangleUserControl.xaml.cs">
       <DependentUpon>TriangleUserControl.xaml</DependentUpon>
@@ -176,10 +175,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Shapes\PentagonUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Shapes\RectangleUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,6 +225,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\Shapes\RectangleUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
