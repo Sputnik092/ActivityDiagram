@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media;
-using System.Collections.ObjectModel;
 
 namespace ActivityDiagram.Model
 {
-
-
-    public class Circle : NotifyBase
+    public class ConnectionPoint : NotifyBase
     {
         private static int counter = 0;
 
@@ -36,7 +32,7 @@ namespace ActivityDiagram.Model
         //    NotifyPropertyChanged();
         //    NotifyPropertyChanged("CanvasCenterX");
         //  }
-        public double X { get { return x; } set { x = value; NotifyPropertyChanged(); NotifyPropertyChanged(() => CanvasCenterX); } }
+        public double X { get { return x; } set { x = value; NotifyPropertyChanged(); } }
 
         private double y = 200;
         // The reason no string is given to the 'NotifyPropertyChanged' method is because, 
@@ -55,47 +51,7 @@ namespace ActivityDiagram.Model
         //    NotifyPropertyChanged();
         //    NotifyPropertyChanged("CanvasCenterY");
         //  }
-        public double Y { get { return y; } set { y = value; NotifyPropertyChanged(); NotifyPropertyChanged(() => CanvasCenterY); } }
-
-        private double width = 100;
-        // The reason no string is given to the 'NotifyPropertyChanged' method is because, 
-        //  it uses the compiler to get the name of the calling property, 
-        //  which in this case is the name of the property that has changed.
-        // A lambda expression can be given, because the 'NotifyPropertyChanged' method can get the property name from it.
-        // Java:
-        //  private double width;
-        // 
-        //  public double getWidth(){
-        //    return width;
-        //  }
-        //
-        //  public void setWidth(double value){
-        //    width = value;
-        //    NotifyPropertyChanged();
-        //    NotifyPropertyChanged("CanvasCenterX");
-        //    NotifyPropertyChanged("CenterX");
-        //  }
-        public double Width { get { return width; } set { width = value; NotifyPropertyChanged(); NotifyPropertyChanged(() => CanvasCenterX); NotifyPropertyChanged(() => CenterX); } }
-
-        private double height = 100;
-        // The reason no string is given to the 'NotifyPropertyChanged' method is because, 
-        //  it uses the compiler to get the name of the calling property, 
-        //  which in this case is the name of the property that has changed.
-        // A lambda expression can be given, because the 'NotifyPropertyChanged' method can get the property name from it.
-        // Java:
-        //  private double height;
-        // 
-        //  public double getHeight(){
-        //    return height;
-        //  }
-        //
-        //  public void setHeight(double value){
-        //    height = value;
-        //    NotifyPropertyChanged();
-        //    NotifyPropertyChanged("CanvasCenterY");
-        //    NotifyPropertyChanged("CenterY");
-        //  }
-        public double Height { get { return height; } set { height = value; NotifyPropertyChanged(); NotifyPropertyChanged(() => CanvasCenterY); NotifyPropertyChanged(() => CenterY); } }
+        public double Y { get { return y; } set { y = value; NotifyPropertyChanged(); } }
 
         // Derived properties.
         // Corresponds to making a Getter method in Java (for instance 'public int GetCenterX()'), 
@@ -108,27 +64,7 @@ namespace ActivityDiagram.Model
         //        that is changed during the lifetime of an application, because the requirements change.
 
         // A lambda expression can be given, because the 'NotifyPropertyChanged' method can get the property name from it.
-        public double CanvasCenterX { get { return X + Width / 2; } set { X = value - Width / 2; NotifyPropertyChanged(() => X); } }
-
-        // A lambda expression can be given, because the 'NotifyPropertyChanged' method can get the property name from it.
-        public double CanvasCenterY { get { return Y + Height / 2; } set { Y = value - Height / 2; NotifyPropertyChanged(() => Y); } }
-
-        // The CenterX and CenterY properties are used by the Shape animation to define the point of rotation.
-        // NOTE: These derived properties are diffent from the Shape properties with the same names, 
-        //        from the 02350SuperSimpleDemo, see above for an explanation.
-        // This method uses an expression-bodied member (http://www.informit.com/articles/article.aspx?p=2414582) to simplify a method that only returns a value;
-        // Java:
-        //  public double getCenterX(){
-        //    return X + Width / 2;
-        //  }
-        public double CenterX => Width / 2;
-
-        // Java:
-        // This method uses an expression-bodied member (http://www.informit.com/articles/article.aspx?p=2414582) to simplify a method that only returns a value;
-        //  public double getCenterY(){
-        //    return Y + Height / 2;
-        //  }
-        public double CenterY => Height / 2;
+    
 
         // ViewModel properties.
         // These properties should be in the ViewModel layer, but it is easier for the demo to put them here, 
@@ -140,22 +76,18 @@ namespace ActivityDiagram.Model
         //         but should not be used in the Model layer, creating an unnecessary dependency for the Model layer class library).
         //       To learn how to avoid this and create an application with a more pure MVVM architecture pattern, 
         //        please ask the Teaching Assistants.
-
-        
-    
-
         private bool isSelected;
         // The reason no string is given to the 'NotifyPropertyChanged' method is because, 
         //  it uses the compiler to get the name of the calling property, 
         //  which in this case is the name of the property that has changed.
         // A lambda expression can be given, because the 'NotifyPropertyChanged' method can get the property name from it.
-        public bool IsSelected { get { return isSelected; } set { isSelected = value; NotifyPropertyChanged(); NotifyPropertyChanged(() => SelectedColor); } }
+        public bool IsSelected { get { return isSelected; } set { isSelected = value; NotifyPropertyChanged(); } }
         // This method uses an expression-bodied member (http://www.informit.com/articles/article.aspx?p=2414582) to simplify a method that only returns a value;
-        public Brush SelectedColor => IsSelected ? Brushes.Red : Brushes.Yellow;
+  
 
         // Constructor.
         // The constructor is in this case used to set the default values for the properties.
-        public Circle()
+        public ConnectionPoint()
         {
             // This just means that the integer field called counter is incremented before its value is used to set the Number integer property.
             Number = ++counter;
@@ -167,6 +99,5 @@ namespace ActivityDiagram.Model
         // This method uses an expression-bodied member (http://www.informit.com/articles/article.aspx?p=2414582) to simplify a method that only returns a value;
         public override string ToString() => Number.ToString();
     }
-
 
 }

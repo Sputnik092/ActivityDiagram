@@ -7,20 +7,20 @@
         xmlns:ViewModel="clr-namespace:ActivityDiagram.ViewModel"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
-        Height="420"
-        Width="400"
+        Height="600"
+        Width="1000"
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
 
-    <Grid x:Name="LayoutRoot" Width="400" >
+    <Grid x:Name="LayoutRoot" Width="1000" HorizontalAlignment="Left">
 
         <StackPanel Orientation="Horizontal" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="{Binding Width, ElementName=LayoutRoot}" Grid.ColumnSpan="2">
             <View:Menu/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
             <View:LeftPanel/>
-            <Grid Width="133" Margin="0,20,0,0" >
+            <Grid Width="333" Margin="0,20,0,0" >
                 <ItemsControl ItemsSource="{Binding Rectangles}"/>
                 <ItemsControl ItemsSource="{Binding Circles}"/>
                 <ItemsControl ItemsSource="{Binding Triangles}"/>

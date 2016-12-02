@@ -24,5 +24,9 @@ namespace ActivityDiagram.View.Shapes
         {
             InitializeComponent();
         }
+        protected void HandleDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
     }
 }
