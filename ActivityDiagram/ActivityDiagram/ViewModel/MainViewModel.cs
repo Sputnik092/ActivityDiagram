@@ -14,6 +14,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using GalaSoft.MvvmLight.CommandWpf;
 using Microsoft.Win32;
+using System.IO;
+using System;
 
 namespace ActivityDiagram.ViewModel
 {
@@ -29,12 +31,15 @@ namespace ActivityDiagram.ViewModel
     public class MainViewModel : ViewModelBase
     {
 
+       
+
+
         public RelayCommand SaveDiagramCommand
         {
             get
             {
                 return _saveDiagramCommand ?? (_saveDiagramCommand = new RelayCommand(() => {
-                    var dialog = new Microsoft.Win32.SaveFileDialog();
+                    var dialog = new SaveFileDialog() { Title = "Save Diagram", Filter = "XML Document (.xml)|*.xml", DefaultExt = "xml" };
                     if (dialog.ShowDialog() != true)
                         return;
                     using (var stream = dialog.OpenFile())
@@ -44,19 +49,37 @@ namespace ActivityDiagram.ViewModel
                 }));
             }
         }
-
+        Stream myStream = null;
         public RelayCommand openDiagramCommand
         {
             get
             {
                 return _openDiagramCommand ?? (_openDiagramCommand = new RelayCommand(() => {
-                    var dialog = new Microsoft.Win32.OpenFileDialog();
-                    if (dialog.ShowDialog() != true)
+                    var opendialog = new Microsoft.Win32.OpenFileDialog();
+                    if (opendialog.ShowDialog() != true)
                         return;
-                    using (var stream = dialog.OpenFile())
+                    try
                     {
-                        //write out file to disk
+                        if ((myStream = opendialog.OpenFile()) != null)
+                        {
+                            using (myStream)
+                            {
+                                // Insert code to read the stream here.
+                            }
+                        }
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    }
+
+
+
+
+                    // using (var ostream = opendialog.OpenFile())
+                    //{
+                    //Open
+                    // }
                 }));
             }
         }
@@ -147,6 +170,8 @@ namespace ActivityDiagram.ViewModel
             AddSquareCommand = new RelayCommand(AddSquare);
             AddCircleCommand = new RelayCommand(AddCircle);
             AddTriangleCommand = new RelayCommand(AddTriangle);
+
+            
            
 
             ClearCanvasCommand = new RelayCommand(ClearCanvas);

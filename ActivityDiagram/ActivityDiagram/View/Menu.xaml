@@ -14,7 +14,7 @@
                 </MenuItem>
                 <MenuItem x:Name="mnuSave"  Header="Save" Command="{Binding SaveDiagramCommand}"/>
                 <MenuItem Command="ApplicationCommands.SaveAs"/>
-                <MenuItem x:Name="mnuOpen" Header="Open" Click="mnuOpen_Click"/>
+                <MenuItem x:Name="mnuOpen" Header="Open" Click="mnuOpen_Click"  Command="{Binding OpenDiagramCommand}"/>
 
 
             </MenuItem>
