@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ActivityDiagram.View.Shapes.RectangleUserControl"
+﻿<UserControl x:Class="ActivityDiagram.View.Shapes.DecisionUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,27 +10,16 @@
              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}" Width="{Binding Width}" Height="{Binding Height}"
              d:DesignHeight="100" d:DesignWidth="100">
 
-      
+
     <Grid>
-        <Ellipse DataContext="{Binding Source = E}"></Ellipse>
-        <Ellipse Name="northPoint" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10" Height="10" Margin="-4" Fill="Gray"  Panel.ZIndex="2" Visibility="{Binding Visibility}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
-                    <cmd:EventToCommand Command="{Binding DataContext.MouseDownPointCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="MouseEnter">
-                    <cmd:EventToCommand Command="{Binding DataContext.MouseHoverPointCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="MouseLeave">
-                    <cmd:EventToCommand Command="{Binding DataContext.MouseExitPointCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Ellipse>
-       
+        <Ellipse Name="northPoint" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10" Height="10" Margin="-4" Fill="Gray"  Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
+        <Ellipse Name="southPoint" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="10" Height="10" Margin="-4" Fill="Gray" Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
         <Ellipse Name="eastPoint" HorizontalAlignment="Right" VerticalAlignment="Center" Width="10" Height="10"  Margin="-4" Fill="Gray" Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
         <Ellipse Name="westPoint" HorizontalAlignment="Left" VerticalAlignment="Center" Width="10" Height="10"  Margin="-4" Fill="Gray" Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
-        <Rectangle Stroke="Black" StrokeThickness="4" Fill="White">
-            
+        <Rectangle Name="Rect" Stroke="Black" StrokeThickness="4" Fill="White">
+            <Rectangle.LayoutTransform>
+                <RotateTransform Angle="-45"/>
+            </Rectangle.LayoutTransform>
 
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseEnter">
