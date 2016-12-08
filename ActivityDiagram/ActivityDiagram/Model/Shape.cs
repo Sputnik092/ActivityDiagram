@@ -38,11 +38,11 @@ namespace ActivityDiagram.Model
 
         public double Y { get { return y; } set { y = value; NotifyPropertyChanged(); NotifyPropertyChanged(() => CanvasCenterY); } }
 
-        private double width = 100;
+        private double width = 200;
 
         public double Width { get { return width; } set { width = value; NotifyPropertyChanged(); NotifyPropertyChanged(() => CanvasCenterX); NotifyPropertyChanged(() => CenterX); } }
 
-        private double height = 100;
+        private double height = 75;
 
         public double Height { get { return height; } set { height = value; NotifyPropertyChanged(); NotifyPropertyChanged(() => CanvasCenterY); NotifyPropertyChanged(() => CenterY); } }
 
