@@ -14,7 +14,7 @@
         <!-- Quick Access Toolbar - located at the upper-left corner -->
         <Ribbon.QuickAccessToolBar>
             <RibbonQuickAccessToolBar>
-                <RibbonButton ToolTip="New Diagram" SmallImageSource="/Images/New.png" Command="{Binding NewDiagramCommand}"/>
+                <RibbonButton ToolTip="New Diagram" SmallImageSource="/Images/New.png" Command="{Binding ClearCanvasCommand}"/>
                 <RibbonButton ToolTip="Open Diagram" SmallImageSource="/Images/Open.png" Command="{Binding OpenDiagramCommand}"/>
                 <RibbonButton ToolTip="Save Diagram" SmallImageSource="/Images/Save.png" Command="{Binding SaveDiagramCommand}"/>
                 <RibbonSplitButton ToolTip="Undo" SmallImageSource="/Images/Undo.png" Command="{Binding UndoCommand}">
@@ -40,7 +40,7 @@
         <!-- Application Menu, located at the left-hand side (down arrow) -->
         <Ribbon.ApplicationMenu>
             <RibbonApplicationMenu KeyTip="F" SmallImageSource="/Images/Settings.png">
-                <RibbonApplicationMenuItem Header="New" ImageSource="/Images/New.png" Command="{Binding NewDiagramCommand}"/>
+                <RibbonApplicationMenuItem Header="New" ImageSource="/Images/New.png" Command="{Binding ClearCanvasCommand}"/>
                 <RibbonApplicationMenuItem Header="Open" ImageSource="/Images/Open.png" Command="{Binding OpenDiagramCommand}"/>
                 <RibbonApplicationMenuItem Header="Save" ImageSource="/Images/Save.png" Command="{Binding SaveDiagramCommand}"/>
                 <RibbonSeparator/>
@@ -53,7 +53,7 @@
         <RibbonTab Header="Home" KeyTip="H" >
             <!-- Load/Save group-->
             <RibbonGroup Header="Load/Save">
-                <RibbonButton SmallImageSource="/Images/New.png" Label="New" KeyTip="N" Command="{Binding NewDiagramCommand}"/>
+                <RibbonButton SmallImageSource="/Images/New.png" Label="New" KeyTip="N" Command="{Binding ClearCanvasCommand}"/>
                 <RibbonButton SmallImageSource="/Images/Open.png" Label="Open" KeyTip="O" Command="{Binding OpenDiagramCommand}"/>
                 <RibbonButton SmallImageSource="/Images/Save.png" Label="Save" KeyTip="S" Command="{Binding SaveDiagramCommand}"/>
             </RibbonGroup>

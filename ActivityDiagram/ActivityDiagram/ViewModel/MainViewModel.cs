@@ -177,7 +177,7 @@ namespace ActivityDiagram.ViewModel
 
             AddLineCommand = new RelayCommand(AddLine);
             RemoveLinesCommand = new RelayCommand<IList>(RemoveLines, CanRemoveLines);
-            RemoveCircleCommand = new RelayCommand(RemoveCircle);
+            RemoveCircleCommand = new RelayCommand<IList>(RemoveCircle);
 
         }
 
@@ -374,10 +374,10 @@ namespace ActivityDiagram.ViewModel
             undoRedoController.AddAndExecute(new RemoveLinesCommand(Lines, _lines.Cast<Model.Line>().ToList()));
         }
 
-        private void RemoveCircle()
+        private void RemoveCircle(IList _shapes)
         {
-            System.Console.WriteLine("test2");
-           // undoRedoController.AddAndExecute(new RemoveCircleCommand(Shapes));
+            
+           undoRedoController.AddAndExecute(new RemoveCircleCommand(Shapes, _shapes.Cast<Model.Shape>().ToList()));
         }
     }
 }

@@ -22,7 +22,9 @@ namespace ActivityDiagram.Model
 
         public int Number { get; }
 
-        public Ellipse northPoint = new Ellipse(), southPoint = new Ellipse(), eastPoint = new Ellipse(), westPoint = new Ellipse();
+       // public Grid rootGrid;
+
+       // public Ellipse northPoint = new Ellipse(), southPoint = new Ellipse(), eastPoint = new Ellipse(), westPoint = new Ellipse();
 
         private String visibility = "Hidden";
 
@@ -64,11 +66,11 @@ namespace ActivityDiagram.Model
 
         public Shape()
         {
-           
+            //rootGrid = new Grid();
             Number = ++counter;
         }
 
-        private void MouseExitPoint(object sender, MouseEventArgs e)
+      /*  private void MouseExitPoint(object sender, MouseEventArgs e)
         {
             
         }
@@ -82,7 +84,7 @@ namespace ActivityDiagram.Model
         {
             
         }
-
+        */
         public override string ToString() => Number.ToString();
     }
    

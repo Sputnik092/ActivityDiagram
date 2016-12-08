@@ -43,26 +43,12 @@ namespace ActivityDiagram.Command
         // For doing and redoing the command.
         public void Execute()
         {
-            // This is a lambda expression, that iterates the 'linesToRemove' collection, 
-            //  and for each one removes it from the 'lines' collection.
-            // Java:
-            //  foreach (Line line in linesToRemove)
-            //  { 
-            //    lines.Remove(line);
-            //  }
             linesToRemove.ForEach(x => lines.Remove(x));
         }
 
         // For undoing the command.
         public void UnExecute()
         {
-            // This is a lambda expression, that iterates the 'linesToRemove' collection, 
-            //  and for each one adds it to the 'lines' collection.
-            // Java:
-            //  foreach (Line line in linesToRemove)
-            //  { 
-            //    lines.Add(line);
-            //  }
             linesToRemove.ForEach(x => lines.Add(x));
         }
 

@@ -14,12 +14,18 @@ namespace ActivityDiagram.Model
     {
         public Rectangle()
         {
-            northPoint.Width = 10;
+            /*northPoint.Width = 10;
             northPoint.Height = 10;
-            northPoint.VerticalAlignment = VerticalAlignment.Top;
+            northPoint.VerticalAlignment = VerticalAlignment.Bottom;
             northPoint.HorizontalAlignment = HorizontalAlignment.Center;
             Panel.SetZIndex(northPoint, 2);
+            northPoint.Visibility = System.Windows.Visibility.Visible;
+            northPoint.StrokeThickness = 10;
+            northPoint.Stroke = Brushes.Green;
+            northPoint.Fill = Brushes.Green;
 
+            rootGrid.Children.Add(northPoint);
+            */
         }
         public override string ToString() => Number.ToString();
     }
