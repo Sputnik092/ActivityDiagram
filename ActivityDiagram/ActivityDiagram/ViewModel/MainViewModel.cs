@@ -175,9 +175,10 @@ namespace ActivityDiagram.ViewModel
 
            // DoubleClickTextBlock = new RelayCommand<MouseButtonEventArgs>(DoubleClickText);
 
-            /*Lines = new ObservableCollection<Line>() {
-                new Line() { From = Circles.ElementAt(0), To = Circles.ElementAt(1) }
-            };*/
+            Lines = new ObservableCollection<Line>() {
+                new Line() { From = Shapes.ElementAt(0), To = Shapes.ElementAt(1) },
+                new Line() { From = Shapes.ElementAt(2), To = Shapes.ElementAt(3) }
+            };
 
             AddLineCommand = new RelayCommand(AddLine);
             RemoveLinesCommand = new RelayCommand<IList>(RemoveLines, CanRemoveLines);
