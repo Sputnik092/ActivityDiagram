@@ -325,14 +325,16 @@ namespace ActivityDiagram.ViewModel
                 isAddingLine = true;
             }else
             {
+                isAddingLine = false;
                 if (addingLineFrom != Target(e))
                 {
-                    isAddingLine = false;
+                   
                     Model.Line line = new Model.Line() {From = addingLineFrom, To = Target(e) };
                     //System.Console.WriteLine( addingLineFrom.VerticalAlignment);
 
                     undoRedoController.AddAndExecute(new AddLineCommand(Lines, line));
                 }
+               
                 
             }
             
