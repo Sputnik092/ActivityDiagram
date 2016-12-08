@@ -1,4 +1,4 @@
-﻿<Window x:Class="ActivityDiagram.MainWindow"
+﻿<RibbonWindow x:Class="ActivityDiagram.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,29 +8,26 @@
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
         Height="600"
-        Width="1000"
+        Width="800"
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
-
-
-    <Grid x:Name="LayoutRoot" Width="1000" HorizontalAlignment="Left">
-
-        <StackPanel Orientation="Horizontal" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="{Binding Width, ElementName=LayoutRoot}" Grid.ColumnSpan="2">
-            <View:Menu/>
+    <DockPanel>
+        <View:FinalMenu DockPanel.Dock="Top"/>
+        <View:Sidepanel DockPanel.Dock="Left"/>
+        <StackPanel DockPanel.Dock="Bottom">
+            <Slider x:Name="zoomSlider" ToolTip="Zoom" Value="1" Minimum="0.1" Maximum="10"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Name="RichTextBox">
-            <View:LeftPanel/>
-            <Grid Width="333" Margin="0,20,0,0" >
-                <ItemsControl ItemsSource="{Binding Shapes}"/>
-                <ItemsControl ItemsSource="{Binding Rectangles}"/>
-                <ItemsControl ItemsSource="{Binding Circles}"/>
-                <ItemsControl ItemsSource="{Binding Triangles}"/>
-                <ItemsControl ItemsSource="{Binding Lines}"/>
-                
-                
-            </Grid>
-            <View:RightPanel/>
+        <ItemsControl ItemsSource="{Binding Shapes}"/>
+        <ItemsControl ItemsSource="{Binding Rectangles}"/>
+        <ItemsControl ItemsSource="{Binding Circles}"/>
+        <ItemsControl ItemsSource="{Binding Triangles}"/>
+        <ItemsControl ItemsSource="{Binding Lines}"/>
 
-        </StackPanel>
-    </Grid>
-</Window>
+
+
+    </DockPanel>
+
+
+    
+
+</RibbonWindow>

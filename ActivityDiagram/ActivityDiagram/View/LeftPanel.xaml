@@ -5,9 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ActivityDiagram.View"
              mc:Ignorable="d" 
-             d:DesignWidth="133">
-    <StackPanel x:Name="shapepnl" Width="133" Background="#FFFFFF" Height="550" Margin="0,20,0,0">
-        <ScrollViewer x:Name="shapescroVwr"  Height="{Binding Height, ElementName=shapepnl}">
+             d:DesignHeight="500" d:DesignWidth="260">
+    <Expander ExpandDirection="Left" Header="Sidebar">
+        <StackPanel x:Name="shapepnl" Width="240" Background="#FFFFFF" Height="550" Margin="0,20,0,0">
+
+           
+                <ScrollViewer x:Name="shapescroVwr"  Height="{Binding Height, ElementName=shapepnl}">
 
             <WrapPanel Orientation="Horizontal" VerticalAlignment="Top">
                 <Button Height="50" Width="50" Command="{Binding AddSquareCommand}">
@@ -42,5 +45,6 @@
         </ScrollViewer>
 
 
-    </StackPanel>
+        </StackPanel>
+    </Expander>
 </UserControl>
