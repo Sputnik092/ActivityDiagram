@@ -88,6 +88,8 @@ namespace ActivityDiagram.ViewModel
 
         private RelayCommand _saveDiagramCommand;
 
+        private Shape lastEnteredShape;
+
         private bool isAddingLine;
 
         private Shape addingLineFrom;
@@ -126,7 +128,11 @@ namespace ActivityDiagram.ViewModel
         public ICommand MouseMoveShapeCommand { get; }
         public ICommand MouseUpShapeCommand { get; }
 
-       // public ICommand DoubleClickTextBlock { get; }
+        public ICommand MouseHoverShapeCommand { get; }
+
+        public ICommand MouseExitShapeCommand { get; }
+
+        // public ICommand DoubleClickTextBlock { get; }
 
         /// <summary>
         /// Gets the WelcomeTitle property.
@@ -138,7 +144,7 @@ namespace ActivityDiagram.ViewModel
 
 
 
-        
+
 
 
 
@@ -155,7 +161,9 @@ namespace ActivityDiagram.ViewModel
                 new Rectangle() { X = 30, Y = 40, Width = 80, Height = 20 },
                 new Triangle() { X = 30, Y = 40, Width = 100, Height = 100 }
             };
-            
+
+     
+
             AddSquareCommand = new RelayCommand(AddSquare);
             AddCircleCommand = new RelayCommand(AddCircle);
             AddTriangleCommand = new RelayCommand(AddTriangle);
@@ -172,8 +180,10 @@ namespace ActivityDiagram.ViewModel
             MouseDownShapeCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownShape);
             MouseMoveShapeCommand = new RelayCommand<MouseEventArgs>(MouseMoveShape);
             MouseUpShapeCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpShape);
+            MouseHoverShapeCommand = new RelayCommand<MouseEventArgs>(MouseHoverShape);
+            MouseExitShapeCommand = new RelayCommand<MouseEventArgs>(MouseExitShape);
 
-           // DoubleClickTextBlock = new RelayCommand<MouseButtonEventArgs>(DoubleClickText);
+            // DoubleClickTextBlock = new RelayCommand<MouseButtonEventArgs>(DoubleClickText);
 
             Lines = new ObservableCollection<Line>() {
                 new Line() { From = Shapes.ElementAt(0), To = Shapes.ElementAt(1) },
@@ -262,10 +272,6 @@ namespace ActivityDiagram.ViewModel
             }
         }
 
-        // There are two reasons for doing a 'MouseUp'.
-        // Either a Line is being drawn, and the second Shape has just been chosen
-        //  or a Shape is being moved and the move is now done.
-        // This uses 'var' which is an implicit type variable (https://msdn.microsoft.com/en-us/library/bb383973.aspx).
         private void MouseUpShape(MouseButtonEventArgs e)
         {
             // Used for adding a Line.
@@ -325,6 +331,19 @@ namespace ActivityDiagram.ViewModel
             }
         }
 
+        private void MouseHoverShape(MouseEventArgs e)
+        {
+            var shape = Target(e);
+            lastEnteredShape = shape;
+            shape.Visibility = "Visible";
+
+        }
+
+        private void MouseExitShape(MouseEventArgs e)
+        {
+            lastEnteredShape.Visibility = "Hidden";
+        }
+
         // Gets the shape that was clicked.
         private Shape Target(MouseEventArgs e)
         {
@@ -373,22 +392,5 @@ namespace ActivityDiagram.ViewModel
             System.Console.WriteLine("test2");
             undoRedoController.AddAndExecute(new RemoveCircleCommand(Shapes));
         }
-
-        private Shape TargetShape(MouseEventArgs e)
-        {
-            // Here the visual element that the mouse is captured by is retrieved.
-            var shapeVisualElement = (FrameworkElement)e.MouseDevice.Target;
-            // From the shapes visual element, the Shape object which is the DataContext is retrieved.
-            return (Shape)shapeVisualElement.DataContext;
-        }
-
-
-
-        ////public override void Cleanup()
-        ////{
-        ////    // Clean up if needed
-
-        ////    base.Cleanup();
-        ////}
     }
 }

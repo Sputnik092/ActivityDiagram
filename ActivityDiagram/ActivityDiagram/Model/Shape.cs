@@ -16,6 +16,10 @@ namespace ActivityDiagram.Model
 
         public int Number { get; }
 
+        private String visibility = "Hidden";
+
+        public String Visibility { get { return visibility; } set { visibility = value; NotifyPropertyChanged(); } }
+
         private double x= 200;
 
         public double X { get { return x; } set { x = value; NotifyPropertyChanged(); NotifyPropertyChanged(() => CanvasCenterX); } }

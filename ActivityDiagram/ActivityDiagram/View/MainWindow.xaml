@@ -13,6 +13,12 @@
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
 
+    <Window.InputBindings>
+        <KeyBinding Gesture="CTRL+Z" Command="{Binding UndoCommand}"/>
+        <KeyBinding Gesture="CTRL+Y" Command="{Binding RedoCommand}"/>
+        <KeyBinding Gesture="CTRL+S" Command="{Binding SaveDiagramCommand}" />
+    </Window.InputBindings>
+
     <Grid x:Name="LayoutRoot" Width="1000" HorizontalAlignment="Left">
 
         <StackPanel Orientation="Horizontal" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="{Binding Width, ElementName=LayoutRoot}" Grid.ColumnSpan="2">
