@@ -10,7 +10,9 @@
              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}" 
              d:DesignHeight="{Binding Height}" d:DesignWidth="{Binding Width}">
     <Grid>
-        <Ellipse Name="northPoint" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10" Height="10" Margin="-4" Fill="Gray"  Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
+        <Ellipse Name="northPoint" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10" Height="10" Margin="-4" Fill="Gray"  Panel.ZIndex="2" Visibility="{Binding Visibility}">
+            
+        </Ellipse>
         <Ellipse Name="southPoint" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="10" Height="10" Margin="-4" Fill="Gray" Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
         <Ellipse Name="eastPoint" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="10" Height="10"  Margin="-4" Fill="Gray" Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
         <Ellipse Name="westPoint" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="10" Height="10"  Margin="-4" Fill="Gray" Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>

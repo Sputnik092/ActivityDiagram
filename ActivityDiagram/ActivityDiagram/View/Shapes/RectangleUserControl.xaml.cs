@@ -22,8 +22,11 @@ namespace ActivityDiagram.View.Shapes
     {
         public RectangleUserControl()
         {
+
             InitializeComponent();
+
         }
+        //  <Ellipse Name="southPoint" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="10" Height="10" Margin="-4" Fill="Gray" Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
         protected void HandleDoubleClick(object sender, MouseButtonEventArgs e)
         {
             

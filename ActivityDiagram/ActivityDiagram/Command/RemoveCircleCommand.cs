@@ -23,6 +23,7 @@ namespace ActivityDiagram.Command
         //  it also changes the collection that the MainViewModel uses.
         // For a description of an ObservableCollection see the MainViewModel class.
         private ObservableCollection<Shape> shapes;
+ 
         // The 'shape' field holds a new shape, that is added to the 'shapes' collection, 
         //  and if undone, it is removed from the collection.
 

@@ -17,7 +17,6 @@
 
         <Ellipse Stroke="Black" StrokeThickness="4" Fill="White">
             
-            <!-- From the Demos for mouse interaction, needs additional code to be relevant -->
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseEnter">
                     <cmd:EventToCommand Command="{Binding DataContext.MouseHoverShapeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>

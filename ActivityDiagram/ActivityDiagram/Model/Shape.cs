@@ -5,6 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Windows.Input;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace ActivityDiagram.Model
 {
@@ -15,6 +21,8 @@ namespace ActivityDiagram.Model
         private static int counter;
 
         public int Number { get; }
+
+        public Ellipse northPoint = new Ellipse(), southPoint = new Ellipse(), eastPoint = new Ellipse(), westPoint = new Ellipse();
 
         private String visibility = "Hidden";
 
@@ -56,12 +64,27 @@ namespace ActivityDiagram.Model
 
         public Shape()
         {
-        
+           
             Number = ++counter;
+        }
+
+        private void MouseExitPoint(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void MouseEnterPoint(object sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void MouseDownPoint(object sender, MouseButtonEventArgs e)
+        {
+            
         }
 
         public override string ToString() => Number.ToString();
     }
-
+   
 
 }
