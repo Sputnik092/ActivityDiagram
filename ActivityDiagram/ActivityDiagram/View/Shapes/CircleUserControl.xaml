@@ -10,11 +10,21 @@
              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}" Width="{Binding Width}" Height="{Binding Height}" 
              d:DesignHeight="100" d:DesignWidth="100">
     <Grid>
-        
+        <Ellipse Name="northPoint" HorizontalAlignment="Center" VerticalAlignment="Top" Width="10" Height="10" Margin="-4" Fill="Gray"  Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
+        <Ellipse Name="southPoint" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="10" Height="10" Margin="-4" Fill="Gray" Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
+        <Ellipse Name="eastPoint" HorizontalAlignment="Right" VerticalAlignment="Center" Width="10" Height="10"  Margin="-4" Fill="Gray" Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
+        <Ellipse Name="westPoint" HorizontalAlignment="Left" VerticalAlignment="Center" Width="10" Height="10"  Margin="-4" Fill="Gray" Panel.ZIndex="2" Visibility="{Binding Visibility}"></Ellipse>
+
         <Ellipse Stroke="Black" StrokeThickness="4" Fill="White">
             
             <!-- From the Demos for mouse interaction, needs additional code to be relevant -->
             <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseEnter">
+                    <cmd:EventToCommand Command="{Binding DataContext.MouseHoverShapeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeave">
+                    <cmd:EventToCommand Command="{Binding DataContext.MouseExitShapeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
                 <i:EventTrigger EventName="MouseDown">
                     <cmd:EventToCommand Command="{Binding DataContext.MouseDownShapeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
                 </i:EventTrigger>
