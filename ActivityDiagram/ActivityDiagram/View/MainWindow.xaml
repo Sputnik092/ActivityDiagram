@@ -23,6 +23,8 @@
         <ItemsControl ItemsSource="{Binding Triangles}"/>
         <ItemsControl ItemsSource="{Binding Lines}"/>
         <ItemsControl ItemsSource="{Binding ActionActivity}"/>
+        <ItemsControl ItemsSource="{Binding Decision}"/>
+        
 
 
 
