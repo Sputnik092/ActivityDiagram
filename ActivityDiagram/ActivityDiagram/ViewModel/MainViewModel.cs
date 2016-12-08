@@ -111,7 +111,11 @@ namespace ActivityDiagram.ViewModel
         public ICommand AddTriangleCommand { get; }
         public ICommand AddLineCommand { get; }
         public ICommand RemoveLinesCommand { get; }
-
+        public ICommand AddActionActivityCommand { get; }
+        public ICommand AddDecisionCommand { get; }
+        public ICommand AddStartCommand { get; }
+        public ICommand AddEndCommand { get; }
+        public ICommand AddSplitJoinCommand { get; }
         public ICommand RemoveCircleCommand { get; }
 
 
@@ -168,8 +172,10 @@ namespace ActivityDiagram.ViewModel
             AddCircleCommand = new RelayCommand(AddCircle);
             AddTriangleCommand = new RelayCommand(AddTriangle);
 
-            
-           
+            AddActionActivityCommand = new RelayCommand(AddActionActivity);
+            AddDecisionCommand = new RelayCommand(AddDecision);
+
+
 
             ClearCanvasCommand = new RelayCommand(ClearCanvas);
 
@@ -210,6 +216,16 @@ namespace ActivityDiagram.ViewModel
         private void AddSquare()
         {
             undoRedoController.AddAndExecute(new AddSquareCommand(Shapes, new Rectangle()));
+        }
+
+        private void AddActionActivity()
+        {
+            undoRedoController.AddAndExecute(new AddActionActivityCommand(Shapes, new ActionActivity()));
+        }
+
+        private void AddDecision()
+        {
+            undoRedoController.AddAndExecute(new AddDecisionCommand(Shapes, new Decision()));
         }
 
         private void AddCircle()

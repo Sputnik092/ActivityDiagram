@@ -98,9 +98,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\AddActionActivityCommand.cs" />
+    <Compile Include="Command\AddSplitJoinCommand.cs" />
     <Compile Include="Command\AddCircleCommand.cs" />
+    <Compile Include="Command\AddDecisionCommand.cs" />
+    <Compile Include="Command\AddEndCommand.cs" />
     <Compile Include="Command\AddLineCommand.cs" />
     <Compile Include="Command\AddSquareCommand.cs" />
+    <Compile Include="Command\AddStartCommand.cs" />
     <Compile Include="Command\AddTriangleCommand.cs" />
     <Compile Include="Command\ClearCanvasCommand.cs" />
     <Compile Include="Command\CopyCommand.cs" />
@@ -110,20 +115,37 @@
     <Compile Include="Command\MoveShapeCommand.cs" />
     <Compile Include="Command\UndoRedoController.cs" />
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Model\ActionActivity.cs" />
     <Compile Include="Model\ConnectionPoint.cs" />
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
+    <Compile Include="Model\Decision.cs" />
+    <Compile Include="Model\End.cs" />
     <Compile Include="Model\IDataService.cs" />
     <Compile Include="Model\Line.cs" />
     <Compile Include="Model\NotifyBase.cs" />
     <Compile Include="Model\Shape.cs" />
+    <Compile Include="Model\SplitJoin.cs" />
+    <Compile Include="Model\Start.cs" />
     <Compile Include="Model\Triangle.cs" />
     <Compile Include="Model\Pentagon.cs" />
     <Compile Include="Model\Circle.cs" />
     <Compile Include="Model\Rectangle.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\Shapes\ActionActivityUserControl.xaml.cs">
+      <DependentUpon>ActionActivityUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shapes\Bars.xaml.cs">
+      <DependentUpon>Bars.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DialogView.cs" />
+    <Compile Include="View\Shapes\DecisionUserControl.xaml.cs">
+      <DependentUpon>DecisionUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shapes\End.xaml.cs">
+      <DependentUpon>End.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FinalMenu.xaml.cs">
       <DependentUpon>FinalMenu.xaml</DependentUpon>
     </Compile>
@@ -148,12 +170,31 @@
     <Compile Include="View\Shapes\PentagonUserControl.xaml.cs">
       <DependentUpon>PentagonUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Shapes\Start.xaml.cs">
+      <DependentUpon>Start.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Shapes\TriangleUserControl.xaml.cs">
       <DependentUpon>TriangleUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Sidepanel.xaml.cs">
       <DependentUpon>Sidepanel.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Shapes\ActionActivityUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\Bars.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\DecisionUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\End.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\FinalMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Shapes\PentagonUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\Start.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
