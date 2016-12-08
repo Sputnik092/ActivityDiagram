@@ -27,15 +27,21 @@
             </Canvas>
         </DataTemplate>
 
+       
+
+        <DataTemplate DataType="{x:Type Model:Triangle}">
+            <Canvas>
+                <ViewShapes:TriangleUserControl/>
+            </Canvas>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type Model:ActionActivity}">
             <Canvas>
                 <ViewShapes:ActionActivityUserControl/>
             </Canvas>
         </DataTemplate>
-
-        <DataTemplate DataType="{x:Type Model:Triangle}">
+        <DataTemplate DataType="{x:Type Model:Decision}">
             <Canvas>
-                <ViewShapes:TriangleUserControl/>
+                <ViewShapes:DecisionUserControl/>
             </Canvas>
         </DataTemplate>
 
