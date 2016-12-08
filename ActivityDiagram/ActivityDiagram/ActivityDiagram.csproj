@@ -72,6 +72,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -102,7 +104,7 @@
     <Compile Include="Command\IUndoRedoCommand.cs" />
     <Compile Include="Command\RemoveCircleCommand.cs" />
     <Compile Include="Command\RemoveLinesCommand.cs" />
-    <Compile Include="Command\MoveCircleCommand.cs" />
+    <Compile Include="Command\MoveShapeCommand.cs" />
     <Compile Include="Command\UndoRedoController.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Model\ConnectionPoint.cs" />
@@ -127,6 +129,9 @@
     </Compile>
     <Compile Include="View\RightPanel.xaml.cs">
       <DependentUpon>RightPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shapes\RectangleUserControl.xaml.cs">
+      <DependentUpon>RectangleUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Shapes\CircleUserControl.xaml.cs">
       <DependentUpon>CircleUserControl.xaml</DependentUpon>
@@ -167,6 +172,10 @@
     <Page Include="View\RightPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\RectangleUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Shapes\CircleUserControl.xaml">
       <SubType>Designer</SubType>
@@ -227,12 +236,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="View\Shapes\RectangleUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

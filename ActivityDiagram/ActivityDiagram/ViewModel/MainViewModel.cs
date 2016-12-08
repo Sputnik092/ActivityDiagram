@@ -90,16 +90,13 @@ namespace ActivityDiagram.ViewModel
 
         private bool isAddingLine;
 
-        private Circle addingLineFromCircle;
+        private Shape addingLineFrom;
 
         private Point initialMousePosition;
 
-        private Point initialCirclePosition;
+        private Point initialShapePosition;
 
         public double ModeOpacity => isAddingLine ? 0.4 : 1.0;
-        public ObservableCollection<Rectangle> Rectangles { get; set; }
-        public ObservableCollection<Circle> Circles { get; set; }
-        public ObservableCollection<Triangle> Triangles { get; set; }
 
         public ObservableCollection<Shape> Shapes { get; set; }
 
@@ -123,11 +120,11 @@ namespace ActivityDiagram.ViewModel
         public ICommand UndoCommand { get; }
         public ICommand RedoCommand { get; }
 
-        public ICommand CopyCommand { get; }
+        //public ICommand CopyCommand { get; }
 
-        public ICommand MouseDownCircleCommand { get; }
-        public ICommand MouseMoveCircleCommand { get; }
-        public ICommand MouseUpCircleCommand { get; }
+        public ICommand MouseDownShapeCommand { get; }
+        public ICommand MouseMoveShapeCommand { get; }
+        public ICommand MouseUpShapeCommand { get; }
 
        // public ICommand DoubleClickTextBlock { get; }
 
@@ -150,24 +147,7 @@ namespace ActivityDiagram.ViewModel
         /// </summary>
         public MainViewModel()
         {
-
-           
-
-            Rectangles = new ObservableCollection<Rectangle>(){
-                  new Rectangle() { X = 30, Y = 40, Width = 80, Height = 20 } 
-            };
-
-            Circles = new ObservableCollection<Circle>(){
-                new Circle() { X = 30, Y = 40, Width = 120, Height = 140 }, 
-                new Circle()  { X = 150, Y = 100, Width = 150, Height = 150 }
-            };
-
-          
-
-            Triangles = new ObservableCollection<Triangle>(){
-                new Triangle() { X = 30, Y = 40, Width = 100, Height = 100 }
-            };
-            /*
+            
             Shapes = new ObservableCollection<Shape>()
             {
                 new Circle() { X = 30, Y = 40, Width = 120, Height = 140 },
@@ -175,7 +155,7 @@ namespace ActivityDiagram.ViewModel
                 new Rectangle() { X = 30, Y = 40, Width = 80, Height = 20 },
                 new Triangle() { X = 30, Y = 40, Width = 100, Height = 100 }
             };
-            */
+            
             AddSquareCommand = new RelayCommand(AddSquare);
             AddCircleCommand = new RelayCommand(AddCircle);
             AddTriangleCommand = new RelayCommand(AddTriangle);
@@ -187,17 +167,17 @@ namespace ActivityDiagram.ViewModel
 
             UndoCommand = new RelayCommand(undoRedoController.Undo, undoRedoController.CanUndo);
             RedoCommand = new RelayCommand(undoRedoController.Redo, undoRedoController.CanRedo);
-            CopyCommand = new RelayCommand(Copy);
+           // CopyCommand = new RelayCommand(Copy);
 
-            MouseDownCircleCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownCircle);
-            MouseMoveCircleCommand = new RelayCommand<MouseEventArgs>(MouseMoveCircle);
-            MouseUpCircleCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpCircle);
+            MouseDownShapeCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownShape);
+            MouseMoveShapeCommand = new RelayCommand<MouseEventArgs>(MouseMoveShape);
+            MouseUpShapeCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpShape);
 
            // DoubleClickTextBlock = new RelayCommand<MouseButtonEventArgs>(DoubleClickText);
 
-            Lines = new ObservableCollection<Line>() {
+            /*Lines = new ObservableCollection<Line>() {
                 new Line() { From = Circles.ElementAt(0), To = Circles.ElementAt(1) }
-            };
+            };*/
 
             AddLineCommand = new RelayCommand(AddLine);
             RemoveLinesCommand = new RelayCommand<IList>(RemoveLines, CanRemoveLines);
@@ -207,41 +187,38 @@ namespace ActivityDiagram.ViewModel
 
         private void ClearCanvas()
         {
-            undoRedoController.ClearAndExecute(new ClearCanvasCommand(Circles, Rectangles, Triangles, Lines));
+            undoRedoController.ClearAndExecute(new ClearCanvasCommand(Shapes, Lines));
 
         }
 
-        private void Copy()
+        /*private void Copy()
         {
             undoRedoController.AddAndExecute(new CopyCommand(Circles));
-        }
+        }*/
 
         private void AddSquare()
         {
-            undoRedoController.AddAndExecute(new AddSquareCommand(Rectangles, new Rectangle()));
+            undoRedoController.AddAndExecute(new AddSquareCommand(Shapes, new Rectangle()));
         }
 
         private void AddCircle()
         {
-             undoRedoController.AddAndExecute(new AddCircleCommand(Circles, new Circle()));
+             undoRedoController.AddAndExecute(new AddCircleCommand(Shapes, new Circle()));
         }
 
         private void AddTriangle()
         {
-            undoRedoController.AddAndExecute(new AddTriangleCommand(Triangles, new Triangle()));
+            undoRedoController.AddAndExecute(new AddTriangleCommand(Shapes, new Triangle()));
         }
-        private void MouseDownCircle(MouseButtonEventArgs e)
+        private void MouseDownShape(MouseButtonEventArgs e)
         {
             // Checks that a line is not being drawn.
             if (!isAddingLine)
             {
                 // The Shape is gotten from the mouse event.
-                var circle = TargetCircle(e);
-               for (int i = 0; i < Circles.Count(); i++)
-                {
-                    Circles[i].IsSelected = false;
-                }
-                circle.IsSelected = true;
+                var shape = Target(e);
+
+                shape.IsSelected = true;
                 // The mouse position relative to the target of the mouse event.
                 var mousePosition = RelativeMousePosition(e);
                 // When the shape is moved with the mouse, the MouseMoveShape method is called many times, 
@@ -251,7 +228,7 @@ namespace ActivityDiagram.ViewModel
                 //  from when the mouse is released, can become one Undo/Redo command.
                 // The initial shape position is saved to calculate the offset that the shape should be moved.
                 initialMousePosition = mousePosition;
-                initialCirclePosition = new Point(circle.X, circle.Y);
+                initialShapePosition = new Point(shape.X, shape.Y);
 
                 // The mouse is captured, so the current shape will always be the target of the mouse events, 
                 //  even if the mouse is outside the application window.
@@ -261,24 +238,24 @@ namespace ActivityDiagram.ViewModel
 
         // This is only used for moving a Shape, and only if the mouse is already captured.
         // This uses 'var' which is an implicit type variable (https://msdn.microsoft.com/en-us/library/bb383973.aspx).
-        private void MouseMoveCircle(MouseEventArgs e)
+        private void MouseMoveShape(MouseEventArgs e)
         {
            
             // Checks that the mouse is captured and that a line is not being drawn.
             if (Mouse.Captured != null && !isAddingLine)
             {
                 // The Shape is gotten from the mouse event.
-                var circle = TargetCircle(e);
+                var shape = Target(e);
                 // The mouse position relative to the target of the mouse event.
                 var mousePosition = RelativeMousePosition(e);
                 // temp
                 // The Shape is moved by the offset between the original and current mouse position.
                 // The View (GUI) is then notified by the Shape, that its properties have changed.
 
-                if (initialCirclePosition.X + (mousePosition.X - initialMousePosition.X) > 0)
+                if (initialShapePosition.X + (mousePosition.X - initialMousePosition.X) > 0)
                 {
-                    circle.X = initialCirclePosition.X + (mousePosition.X - initialMousePosition.X);
-                    circle.Y = initialCirclePosition.Y + (mousePosition.Y - initialMousePosition.Y);
+                    shape.X = initialShapePosition.X + (mousePosition.X - initialMousePosition.X);
+                    shape.Y = initialShapePosition.Y + (mousePosition.Y - initialMousePosition.Y);
                 }
 
             }
@@ -288,33 +265,33 @@ namespace ActivityDiagram.ViewModel
         // Either a Line is being drawn, and the second Shape has just been chosen
         //  or a Shape is being moved and the move is now done.
         // This uses 'var' which is an implicit type variable (https://msdn.microsoft.com/en-us/library/bb383973.aspx).
-        private void MouseUpCircle(MouseButtonEventArgs e)
+        private void MouseUpShape(MouseButtonEventArgs e)
         {
             // Used for adding a Line.
             if (isAddingLine)
             {
                 // Because a MouseUp event has happened and a Line is currently being drawn, 
                 //  the Shape that the Line is drawn from or to has been selected, and is here retrieved from the event parameters.
-                var circle = TargetCircle(e);
+                var shape = Target(e);
                 // This checks if this is the first Shape chosen during the Line adding operation, 
                 //  by looking at the addingLineFrom variable, which is empty when no Shapes have previously been choosen.
                 // If this is the first Shape choosen, and if so, the Shape is saved in the AddingLineFrom variable.
                 //  Also the Shape is set as selected, to make it look different visually.
-                if (addingLineFromCircle == null) { addingLineFromCircle = circle; addingLineFromCircle.IsSelected = true; }
+                if (addingLineFrom == null) { addingLineFrom = shape; addingLineFrom.IsSelected = true; }
                 // If this is not the first Shape choosen, and therefore the second, 
                 //  it is checked that the first and second Shape are different.
-                else if (addingLineFromCircle.Number != circle.Number)
+                else if (addingLineFrom.Number != shape.Number)
                 {
                     // Now that it has been established that the Line adding operation has been completed succesfully by the user, 
                     //  a Line is added using an 'AddLineCommand', with a new Line given between the two shapes chosen.
                     //undoRedoController.AddAndExecute(new AddLineCommand(Lines, new Line() { From = addingLineFromCircle, To = shape }));
                     // The property used for visually indicating that a Line is being Drawn is cleared, 
                     //  so the View can return to its original and default apperance.
-                    addingLineFromCircle.IsSelected = false;
+                    addingLineFrom.IsSelected = false;
                     // The 'isAddingLine' and 'addingLineFrom' variables are cleared, 
                     //  so the MainViewModel is ready for another Line adding operation.
                     isAddingLine = false;
-                    addingLineFromCircle = null;
+                    addingLineFrom = null;
                     // The property used for visually indicating which Shape has already chosen are choosen is cleared, 
                     //  so the View can return to its original and default apperance.
                     RaisePropertyChanged(() => ModeOpacity);
@@ -324,17 +301,17 @@ namespace ActivityDiagram.ViewModel
             else
             {
                 // The Shape is gotten from the mouse event.
-                var circle = TargetCircle(e);
+                var shape = Target(e);
                 // The mouse position relative to the target of the mouse event.
                 var mousePosition = RelativeMousePosition(e);
 
                 // The Shape is moved back to its original position, so the offset given to the move command works.
-                circle.X = initialCirclePosition.X;
-                circle.Y = initialCirclePosition.Y;
+                shape.X = initialShapePosition.X;
+                shape.Y = initialShapePosition.Y;
 
-                if (initialCirclePosition.X + (mousePosition.X-initialMousePosition.X) > 0)
+                if (initialShapePosition.X + (mousePosition.X-initialMousePosition.X) > 0)
                 {
-                    undoRedoController.AddAndExecute(new MoveCircleCommand(circle, mousePosition.X - initialMousePosition.X, mousePosition.Y - initialMousePosition.Y));
+                    undoRedoController.AddAndExecute(new MoveShapeCommand(shape, mousePosition.X - initialMousePosition.X, mousePosition.Y - initialMousePosition.Y));
                 }
                 // Now that the Move Shape operation is over, the Shape is moved to the final position, 
                 //  by using a MoveNodeCommand to move it.
@@ -348,12 +325,12 @@ namespace ActivityDiagram.ViewModel
         }
 
         // Gets the shape that was clicked.
-        private Circle TargetCircle(MouseEventArgs e)
+        private Shape Target(MouseEventArgs e)
         {
             // Here the visual element that the mouse is captured by is retrieved.
             var shapeVisualElement = (FrameworkElement)e.MouseDevice.Target;
             // From the shapes visual element, the Shape object which is the DataContext is retrieved.
-            return (Circle)shapeVisualElement.DataContext;
+            return (Shape)shapeVisualElement.DataContext;
         }
 
         // Gets the mouse position relative to the canvas.
@@ -393,15 +370,15 @@ namespace ActivityDiagram.ViewModel
         private void RemoveCircle()
         {
             System.Console.WriteLine("test2");
-            undoRedoController.AddAndExecute(new RemoveCircleCommand(Circles));
+            undoRedoController.AddAndExecute(new RemoveCircleCommand(Shapes));
         }
 
-        private Circle TargetShape(MouseEventArgs e)
+        private Shape TargetShape(MouseEventArgs e)
         {
             // Here the visual element that the mouse is captured by is retrieved.
             var shapeVisualElement = (FrameworkElement)e.MouseDevice.Target;
             // From the shapes visual element, the Shape object which is the DataContext is retrieved.
-            return (Circle)shapeVisualElement.DataContext;
+            return (Shape)shapeVisualElement.DataContext;
         }
 
 

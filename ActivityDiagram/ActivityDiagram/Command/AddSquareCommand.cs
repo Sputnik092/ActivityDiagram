@@ -21,7 +21,7 @@ namespace ActivityDiagram.Command
         //  therefore when this collection is changed in a object of this class, 
         //  it also changes the collection that the MainViewModel uses.
         // For a description of an ObservableCollection see the MainViewModel class.
-        private ObservableCollection<Rectangle> rectangles;
+        private ObservableCollection<Shape> shapes;
         // The 'shape' field holds a new shape, that is added to the 'shapes' collection, 
         //  and if undone, it is removed from the collection.
         private Rectangle rectangle;
@@ -31,9 +31,9 @@ namespace ActivityDiagram.Command
         #region Constructor
 
    
-        public AddSquareCommand(ObservableCollection<Rectangle> _rectangles, Rectangle _rectangle)
+        public AddSquareCommand(ObservableCollection<Shape> _shapes, Rectangle _rectangle)
         {
-            rectangles = _rectangles;
+            shapes = _shapes;
             rectangle = _rectangle;
         }
 
@@ -45,13 +45,13 @@ namespace ActivityDiagram.Command
         public void Execute()
         {
             System.Console.WriteLine("Execute!");
-            rectangles.Add(rectangle);
+            shapes.Add(rectangle);
         }
 
   
         public void UnExecute()
         {
-            rectangles.Remove(rectangle);
+            shapes.Remove(rectangle);
         }
 
         #endregion

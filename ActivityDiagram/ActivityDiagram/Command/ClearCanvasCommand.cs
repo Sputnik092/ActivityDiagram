@@ -22,9 +22,7 @@ namespace ActivityDiagram.Command
         //  therefore when this collection is changed in a object of this class, 
         //  it also changes the collection that the MainViewModel uses.
         // For a description of an ObservableCollection see the MainViewModel class.
-        private ObservableCollection<Circle> circles;
-        private ObservableCollection<Rectangle> rectangles;
-        private ObservableCollection<Triangle> triangles;
+        private ObservableCollection<Shape> shapes;
         private ObservableCollection<Line> lines;
         // The 'shape' field holds a new shape, that is added to the 'shapes' collection, 
         //  and if undone, it is removed from the collection.
@@ -34,11 +32,9 @@ namespace ActivityDiagram.Command
         #region Constructor
 
 
-        public ClearCanvasCommand(ObservableCollection<Circle> _circles, ObservableCollection<Rectangle> _rectangles, ObservableCollection<Triangle> _triangles, ObservableCollection<Line> _lines )
+        public ClearCanvasCommand( ObservableCollection<Shape> _shapes, ObservableCollection<Line> _lines )
         {
-            circles = _circles;
-            rectangles = _rectangles;
-            triangles = _triangles;
+            shapes = _shapes;
             lines = _lines;
 
         }
@@ -50,9 +46,7 @@ namespace ActivityDiagram.Command
 
         public void Execute()
         {
-            circles.Clear();
-            rectangles.Clear();
-            triangles.Clear();
+            shapes.Clear();
             lines.Clear();
             
         }

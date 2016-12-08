@@ -21,10 +21,12 @@
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Name="RichTextBox">
             <View:LeftPanel/>
             <Grid Width="333" Margin="0,20,0,0" >
+                <ItemsControl ItemsSource="{Binding Shapes}"/>
                 <ItemsControl ItemsSource="{Binding Rectangles}"/>
                 <ItemsControl ItemsSource="{Binding Circles}"/>
                 <ItemsControl ItemsSource="{Binding Triangles}"/>
                 <ItemsControl ItemsSource="{Binding Lines}"/>
+                
                 
             </Grid>
             <View:RightPanel/>

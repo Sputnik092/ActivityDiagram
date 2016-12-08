@@ -21,7 +21,7 @@ namespace ActivityDiagram.Command
         //  therefore when this collection is changed in a object of this class, 
         //  it also changes the collection that the MainViewModel uses.
         // For a description of an ObservableCollection see the MainViewModel class.
-        private ObservableCollection<Circle> circles;
+        private ObservableCollection<Shape> shapes;
         // The 'shape' field holds a new shape, that is added to the 'shapes' collection, 
         //  and if undone, it is removed from the collection.
         private Circle circle;
@@ -31,9 +31,9 @@ namespace ActivityDiagram.Command
         #region Constructor
 
 
-        public AddCircleCommand(ObservableCollection<Circle> _circles, Circle _circle)
+        public AddCircleCommand(ObservableCollection<Shape> _shapes, Circle _circle)
         {
-            circles = _circles;
+            shapes = _shapes;
             circle = _circle;
         }
 
@@ -45,13 +45,13 @@ namespace ActivityDiagram.Command
         public void Execute()
         {
             System.Console.WriteLine("Execute!");
-            circles.Add(circle);
+            shapes.Add(circle);
         }
 
 
         public void UnExecute()
         {
-            circles.Remove(circle);
+            shapes.Remove(circle);
         }
 
         #endregion

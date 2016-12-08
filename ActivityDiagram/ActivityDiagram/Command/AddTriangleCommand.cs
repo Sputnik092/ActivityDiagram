@@ -21,7 +21,7 @@ namespace ActivityDiagram.Command
         //  therefore when this collection is changed in a object of this class, 
         //  it also changes the collection that the MainViewModel uses.
         // For a description of an ObservableCollection see the MainViewModel class.
-        private ObservableCollection<Triangle> triangles;
+        private ObservableCollection<Shape> shapes;
         // The 'shape' field holds a new shape, that is added to the 'shapes' collection, 
         //  and if undone, it is removed from the collection.
         private Triangle triangle;
@@ -31,9 +31,9 @@ namespace ActivityDiagram.Command
         #region Constructor
 
 
-        public AddTriangleCommand(ObservableCollection<Triangle> _triangles, Triangle _triangle)
+        public AddTriangleCommand(ObservableCollection<Shape> _shapes, Triangle _triangle)
         {
-            triangles = _triangles;
+            shapes = _shapes;
             triangle = _triangle;
         }
 
@@ -45,13 +45,13 @@ namespace ActivityDiagram.Command
         public void Execute()
         {
             System.Console.WriteLine("Execute!");
-            triangles.Add(triangle);
+            shapes.Add(triangle);
         }
 
 
         public void UnExecute()
         {
-            triangles.Remove(triangle);
+            shapes.Remove(triangle);
         }
 
         #endregion
