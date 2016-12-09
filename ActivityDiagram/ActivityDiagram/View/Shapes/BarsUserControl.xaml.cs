@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ActivityDiagram.View
+namespace ActivityDiagram.View.Shapes
 {
     /// <summary>
-    /// Interaction logic for Bars.xaml
+    /// Interaction logic for BarsUserControl.xaml
     /// </summary>
-    public partial class Bars : UserControl
+    public partial class BarsUserControl : UserControl
     {
-        public Bars()
+        public BarsUserControl()
         {
             InitializeComponent();
         }

@@ -136,15 +136,12 @@
     <Compile Include="View\Shapes\ActionActivityUserControl.xaml.cs">
       <DependentUpon>ActionActivityUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Shapes\Bars.xaml.cs">
-      <DependentUpon>Bars.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\DialogView.cs" />
+    <Compile Include="View\Shapes\BarsUserControl.xaml.cs">
+      <DependentUpon>BarsUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Shapes\DecisionUserControl.xaml.cs">
       <DependentUpon>DecisionUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Shapes\End.xaml.cs">
-      <DependentUpon>End.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FinalMenu.xaml.cs">
       <DependentUpon>FinalMenu.xaml</DependentUpon>
@@ -157,6 +154,9 @@
     </Compile>
     <Compile Include="View\RightPanel.xaml.cs">
       <DependentUpon>RightPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shapes\EndUserControl.xaml.cs">
+      <DependentUpon>EndUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Shapes\RectangleUserControl.xaml.cs">
       <DependentUpon>RectangleUserControl.xaml</DependentUpon>
@@ -183,15 +183,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Shapes\Bars.xaml">
+    <Page Include="View\Shapes\BarsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Shapes\DecisionUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Shapes\End.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,6 +220,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RightPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Shapes\EndUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
