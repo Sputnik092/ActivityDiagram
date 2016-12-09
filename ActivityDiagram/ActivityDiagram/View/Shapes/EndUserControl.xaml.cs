@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ActivityDiagram.View
+namespace ActivityDiagram.View.Shapes
 {
     /// <summary>
-    /// Interaction logic for End.xaml
+    /// Interaction logic for EndUserControl.xaml
     /// </summary>
-    public partial class End : UserControl
+    public partial class EndUserControl : UserControl
     {
-        public End()
+        public EndUserControl()
         {
             InitializeComponent();
         }

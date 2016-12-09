@@ -48,12 +48,12 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type Model:End}">
             <Canvas>
-                <ViewShapes:End/>
+                <ViewShapes:EndUserControl/>
             </Canvas>
         </DataTemplate>
         <DataTemplate DataType="{x:Type Model:SplitJoin}">
             <Canvas>
-                <ViewShapes:Bars/>
+                <ViewShapes:BarsUserControl/>
             </Canvas>
         </DataTemplate>
 
