@@ -24,6 +24,9 @@
         <ItemsControl ItemsSource="{Binding Lines}"/>
         <ItemsControl ItemsSource="{Binding ActionActivity}"/>
         <ItemsControl ItemsSource="{Binding Decision}"/>
+        <ItemsControl ItemsSource="{Binding Start}"/>
+        <ItemsControl ItemsSource="{Binding End}"/>
+        <ItemsControl ItemsSource="{Binding SplitJoin}"/>
         
 
 

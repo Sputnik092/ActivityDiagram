@@ -10,7 +10,7 @@
         <StackPanel Width="240">
             <GroupBox Header="Shapes">
                 <StackPanel>
-                    <Button Content="Add Circle" Command="{Binding AddCircleCommand}"/> 
+                    <Button Content="Add Start" Command="{Binding AddStartCommand}"/>
                     <Button Content="Add Decision" Command="{Binding AddDecisionCommand}"/>
                     <Button Content="Add Action" Command="{Binding AddActionActivityCommand}"/>
                     <Button Content="Add Split/Join" Command="{Binding AddSplitJoinCommand}"/>

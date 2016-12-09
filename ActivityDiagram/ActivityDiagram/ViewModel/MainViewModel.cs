@@ -159,6 +159,9 @@ namespace ActivityDiagram.ViewModel
 
             AddActionActivityCommand = new RelayCommand(AddActionActivity);
             AddDecisionCommand = new RelayCommand(AddDecision);
+            AddEndCommand = new RelayCommand(AddEnd);
+            AddStartCommand = new RelayCommand(AddStart);
+            AddSplitJoinCommand = new RelayCommand(AddSplitJoin);
 
 
 
@@ -203,6 +206,21 @@ namespace ActivityDiagram.ViewModel
         private void AddSquare()
         {
             undoRedoController.AddAndExecute(new AddSquareCommand(Shapes, new Model.Rectangle()));
+        }
+
+        private void AddStart()
+        {
+            undoRedoController.AddAndExecute(new AddStartCommand(Shapes, new Start()));
+        }
+
+        private void AddEnd()
+        {
+            undoRedoController.AddAndExecute(new AddEndCommand(Shapes, new End()));
+        }
+
+        private void AddSplitJoin()
+        {
+            undoRedoController.AddAndExecute(new AddSplitJoinCommand(Shapes, new SplitJoin()));
         }
 
         private void AddActionActivity()

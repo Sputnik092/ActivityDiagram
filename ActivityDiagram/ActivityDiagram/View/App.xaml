@@ -26,9 +26,6 @@
                 <ViewShapes:CircleUserControl/>
             </Canvas>
         </DataTemplate>
-
-       
-
         <DataTemplate DataType="{x:Type Model:Triangle}">
             <Canvas>
                 <ViewShapes:TriangleUserControl/>
@@ -42,6 +39,21 @@
         <DataTemplate DataType="{x:Type Model:Decision}">
             <Canvas>
                 <ViewShapes:DecisionUserControl/>
+            </Canvas>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type Model:Start}">
+            <Canvas>
+                <ViewShapes:Start/>
+            </Canvas>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type Model:End}">
+            <Canvas>
+                <ViewShapes:End/>
+            </Canvas>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type Model:SplitJoin}">
+            <Canvas>
+                <ViewShapes:Bars/>
             </Canvas>
         </DataTemplate>
 
